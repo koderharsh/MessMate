@@ -5,7 +5,7 @@ const {validateSignup,validateLogin}=require("../middlewares/validation");
 
 exports.studentSignup=(req,res)=>{
   const newStudent={
-    password:req.body.email,
+    email:req.body.email,
     password:req.body.password,
     confirmpassword:req.body.confirmpassword,
     name:req.body.name,

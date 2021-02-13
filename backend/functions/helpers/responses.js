@@ -7,12 +7,15 @@ exports.getResponses=(req,res)=>{
   .then(data=>{
     let responses=[];
     data.forEach(doc=>{
+      if(req.user.college===doc.data().college&&new Date().toISOString().slice(0,10)===doc.data().createdAt){
       responses.push({
         responseId:doc.id,
         response:doc.data().response,
         studentId:doc.data().studentId,
+        college:doc.data().college,
         createdAt:doc.data().createdAt
       });
+    }
     });
     return res.json(responses);
   })
@@ -23,7 +26,8 @@ exports.postResponse=(req,res)=>{
 const newResponse={
     response:req.body.response,
     studentId:req.user.studentId,
-    createdAt:new Date().toISOString()
+    college:req.user.college,
+    createdAt:new Date().toISOString().slice(0,10)
   };
 
   db.collection('responses')
