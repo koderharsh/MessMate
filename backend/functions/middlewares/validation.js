@@ -35,6 +35,10 @@ if(isEmpty(data.college)){
   errors.college="College name must not be empty"
 }
 
+if(isEmpty(data.collegeId)){
+  errors.college="College name must not be empty"
+}
+
 return {
    errors,
    valid: Object.keys(errors).length === 0 ? true : false
