@@ -9,8 +9,8 @@ exports.studentSignup=(req,res)=>{
     password:req.body.password,
     confirmpassword:req.body.confirmpassword,
     name:req.body.name,
-    college:req.body.college,
-    collegeId:req.body.collegeId
+    hostel:req.body.hostel,
+    hostelId:req.body.hostelId
   };
 
   const { valid, errors } = validateSignup(newStudent);
@@ -28,8 +28,8 @@ exports.studentSignup=(req,res)=>{
     const studentCredentials={
       name:newStudent.name,
       email:newStudent.email,
-      college:newStudent.college,
-      collegeId:newStudent.collegeId,
+      hostel:newStudent.hostel,
+      hostelId:newStudent.hostelId,
       createdAt:new Date().toISOString(),
       studentId
     };

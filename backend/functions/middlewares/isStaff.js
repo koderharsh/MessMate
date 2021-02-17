@@ -17,7 +17,8 @@ module.exports=(req,res,next)=>{
     .get();
   })
   .then(data=>{
-    req.user.college=data.docs[0].data().college;
+    req.user.hostel=data.docs[0].data().hostel;
+    req.user.hostelId=data.docs[0].data().hostelId;
     req.user.staffId=data.docs[0].data().staffId;
     return next();
   })

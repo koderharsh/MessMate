@@ -9,6 +9,7 @@ const app=express();
 const {staffSignup,staffLogin}=require("./helpers/staff");
 const {studentSignup,studentLogin}=require("./helpers/students");
 const {getResponses,postResponse}=require("./helpers/responses");
+const { getAbsentees, postAbsentees } = require('./helpers/absentNotif')
 
 const isStudent=require("./middlewares/isStudent");
 const isStaff=require("./middlewares/isStaff");
@@ -24,5 +25,9 @@ app.post("/login/student",studentLogin);
 //Response routes
 app.get("/responses",isStaff,getResponses);
 app.post("/response",isStudent,postResponse);
+
+// Prior absence notif routes.
+app.get('/absentees', isStaff, getAbsentees)
+app.post('/absentees', isStudent, postAbsentees)
 
 exports.api=functions.https.onRequest(app);
