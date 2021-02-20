@@ -10,6 +10,7 @@ const {staffSignup,staffLogin}=require("./helpers/staff");
 const {studentSignup,studentLogin}=require("./helpers/students");
 const {getResponses,postResponse}=require("./helpers/responses");
 const { getAbsentees, postAbsentees } = require('./helpers/absentNotif')
+const { postFeedback, getFeedback } = require("./helpers/feedback")
 
 const isStudent=require("./middlewares/isStudent");
 const isStaff=require("./middlewares/isStaff");
@@ -29,5 +30,9 @@ app.post("/response",isStudent,postResponse);
 // Prior absence notif routes.
 app.get('/absentees', isStaff, getAbsentees)
 app.post('/absentees', isStudent, postAbsentees)
+
+// Rating and review routes.
+app.get('/feedback', isStaff, getFeedback)
+app.post('/feedback', isStudent, postFeedback)
 
 exports.api=functions.https.onRequest(app);
