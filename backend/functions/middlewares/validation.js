@@ -31,12 +31,12 @@ if(isEmpty(data.name)){
   errors.name="Name must not be empty"
 }
 
-if(isEmpty(data.college)){
-  errors.college="College name must not be empty"
+if(isEmpty(data.hostel)){
+  errors.college="Hostel name must not be empty"
 }
 
-if(isEmpty(data.collegeId)){
-  errors.college="College name must not be empty"
+if(isEmpty(data.hostelId)){
+  errors.college="HostelId must not be empty"
 }
 
 return {

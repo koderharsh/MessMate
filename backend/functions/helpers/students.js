@@ -37,7 +37,7 @@ exports.studentSignup=(req,res)=>{
     return db.doc(`student/${studentId}`).set(studentCredentials);
   })
   .then(()=>{
-    return res.status(201).json({studenttoken});
+    return res.status(201).json({studenttoken,studentId});
   })
   .catch(err=>{
     console.error(err);
@@ -57,14 +57,15 @@ exports.studentLogin=(req,res)=>{
   const { valid, errors } = validateLogin(student);
   if (!valid) return res.status(400).json(errors);
 
-  let studenttoken;
+  let studenttoken,studentId;
   firebase.auth().signInWithEmailAndPassword(student.email,student.password)
   .then(data=>{
+    studentId=data.user.uid;
     return data.user.getIdToken();
   })
   .then(token=>{
     studenttoken=token;
-    return res.json({studenttoken});
+    return res.json({studenttoken,studentId});
   })
   .catch(err=>{
     console.error(err);

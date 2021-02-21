@@ -29,7 +29,7 @@ exports.staffSignup=(req,res)=>{
       name:newStaff.name,
       email:newStaff.email,
       hostel:newStaff.hostel,
-      hostelid:newStaff.hostelId,
+      hostelId:newStaff.hostelId,
       createdAt:new Date().toISOString(),
       staffId
     };
@@ -37,7 +37,7 @@ exports.staffSignup=(req,res)=>{
     return db.doc(`staff/${staffId}`).set(staffCredentials);
 })
 .then(()=>{
-  return res.status(201).json({stafftoken});
+  return res.status(201).json({stafftoken,staffId});
 })
   .catch(err=>{
     console.error(err);
@@ -57,14 +57,15 @@ exports.staffLogin=(req,res)=>{
   const { valid, errors } = validateLogin(staff);
   if (!valid) return res.status(400).json(errors);
 
- let stafftoken;
+ let stafftoken,staffId;
   firebase.auth().signInWithEmailAndPassword(staff.email,staff.password)
   .then(data=>{
+    staffId=data.user.uid;
     return data.user.getIdToken();
   })
   .then(token=>{
     stafftoken=token;
-    return res.json({stafftoken});
+    return res.json({stafftoken,staffId});
   })
   .catch(err=>{
     console.error(err);

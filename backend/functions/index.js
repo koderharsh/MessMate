@@ -29,7 +29,7 @@ app.get("/responses", isStaff, getResponses);
 app.post("/response", isStudent, postResponse);
 
 // Prior absence notif routes.
-app.get("/absentees", isStaff, getAbsentees);
+app.get("/absentees",isStaff,getAbsentees);
 app.post("/absentees", isStudent, postAbsentees);
 
 // Rating and review routes.
