@@ -22,7 +22,7 @@ const postFeedback = async function (req, res) {
         doc = await db.collection(`feedback`).doc(`${req.user.hostelId}: ${currentDate}`).get()
         
         let currentRating = doc.data()[req.body.meal].rating || { ratingAverage: 0, ratingCount: 0 }
-        currentRating.ratingAverage = (currentRating.ratingAverage * currentRating.ratingCount + req.body.rating) / (currentRating.ratingCount + 1)
+        currentRating.ratingAverage = (currentRating.ratingAverage * currentRating.ratingCount + parseInt(req.body.rating)) / (currentRating.ratingCount + 1)
         currentRating.ratingCount++;
 
         let reviews = doc.data()[req.body.meal].reviews || []
