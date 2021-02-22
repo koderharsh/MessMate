@@ -36,7 +36,7 @@ const Dashboard=()=>{
     setFeedback({...feedback,[name]:event.target.value});
   };
 
-const postStudentFeedback=()=>{
+const postStudentFeedback=(event)=>{
   event.preventDefault()
   setAbsentee({...feedback});
   postFeedback(token,{meal,rating,review})
