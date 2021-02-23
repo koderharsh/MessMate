@@ -33,6 +33,7 @@ const Dashboard = () => {
           console.log(err)
         else {
           setAbsentees({ breakfast: data.breakfast, lunch: data.lunch, dinner: data.dinner })
+          console.log(data);
         }
       })
   }
@@ -78,6 +79,7 @@ const Dashboard = () => {
     getAbsenteeList();
     getStudentFeedback();
   }, [])
+  
   // return (
   //   <div>
   //     {isAuthenticated() ? (
@@ -110,13 +112,20 @@ return (
 
       <div id="cardgrid">
           <div className="cardgrid__card" id="card1">
-              <h3>ABSENTEES COMPONENT</h3>
+              <h2>TOTAL ABSENTEES : 35</h2>
+              <h3>Breakfast:5</h3>
+              <h3>Lunch:10 </h3>
+              <h3>Dinner:20</h3>
+
           </div>
           <div className="cardgrid__card" id="card2">
-              <h3>MESSMENU COMPONENT</h3>
+          <h2>TODAY'S MENU</h2>
+              <h3>Breakfast: </h3>
+              <h3>Lunch:10 </h3>
+              <h3>Dinner:20</h3>
           </div>
           <div className="cardgrid__card" id="card3">
-              <h3>LAST MEALS RATING & REVIEWS COMPONENT</h3>
+              <h2>RATINGS AND REVIEWS</h2>
           </div>
       </div>
 

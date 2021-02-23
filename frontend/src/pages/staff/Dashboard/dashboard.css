@@ -102,11 +102,16 @@ body {
     backdrop-filter: blur(20px);
     /* border: solid; */
     margin: 10px 10px;
-    font-family: 'Roboto';
+    /* font-family: 'Roboto'; */
     padding: 20px;
     color: rgba(41, 41, 41, 0.678);
+    font-family:cursive ;
+    text-align: center;
 }
 
+.cardgrid__card > h2 {
+    padding-bottom: 20px;
+}
 @media only screen and (max-width: 1300px) {
     #messImg-wrapper {
         transform: rotate(0deg) scale(1) translateY(0px) translateX(0px);
@@ -204,7 +209,8 @@ body {
         background-color: rgba(255, 61, 12, 1);
     }
     #navright {
-        display: block;
+        display: flex;
+        justify-content: space-evenly;
         float: unset;
         color: rgba(255, 61, 12, 0.794);
         background-color: #ffffff;
