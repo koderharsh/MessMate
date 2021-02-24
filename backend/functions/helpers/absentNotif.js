@@ -1,11 +1,15 @@
 const { admin, db } = require('../admin')
 
 const getAbsentees = async function (req, res) {
-    let currentDate = new Date().toDateString()
-    
+    let currentDate = req.body.testdate || new Date().toDateString()
+
     try {
         const doc = await db.collection(`absentees`).doc(`${req.user.hostelId}: ${currentDate}`).get()
-        if (!doc.exists) res.json({ 'error': 'no records found.' })
+        if (!doc.exists) 
+        {
+            res.json({ 'error': 'no records found.' })
+            return
+        }
 
         let response = {
             'breakfast': { 'count': doc.data().breakfast.length, 'list': doc.data().breakfast },
@@ -17,7 +21,8 @@ const getAbsentees = async function (req, res) {
 } 
 
 const postAbsentees = async function (req, res) {
-    let currentDate = new Date().toDateString()
+    let currentDate = req.body.testdate || new Date().toDateString()  
+
     //ENSURE WE HAVE 'MEAL' IN REQ.BODY
     try {
         let doc = await db.collection(`absentees`).doc(`${req.user.hostelId}: ${currentDate}`).get()

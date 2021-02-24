@@ -15,6 +15,7 @@ const { postMenu, getMenu } = require("./helpers/menu");
 
 const isStudent = require("./middlewares/isStudent");
 const isStaff = require("./middlewares/isStaff");
+const testware = require("./middlewares/testware");
 
 //Staff routes
 app.post("/signup/staff", staffSignup);
@@ -29,12 +30,12 @@ app.get("/responses", isStaff, getResponses);
 app.post("/response", isStudent, postResponse);
 
 // Prior absence notif routes.
-app.get("/absentees",isStaff,getAbsentees);
-app.post("/absentees", isStudent, postAbsentees);
+app.get("/absentees",isStaff, testware, getAbsentees);
+app.post("/absentees", isStudent, testware, postAbsentees);
 
 // Rating and review routes.
-app.get("/feedback", isStaff, getFeedback);
-app.post("/feedback", isStudent, postFeedback);
+app.get("/feedback", isStaff, testware, getFeedback);
+app.post("/feedback", isStudent, testware, postFeedback);
 
 //Menu Routes
 

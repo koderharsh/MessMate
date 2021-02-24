@@ -33,7 +33,7 @@ const Dashboard = () => {
           console.log(err)
         else {
           setAbsentees({ breakfast: data.breakfast, lunch: data.lunch, dinner: data.dinner })
-          console.log(data);
+          console.log('absentee response', data);
         }
       })
   }
@@ -44,7 +44,7 @@ const Dashboard = () => {
         if (err)
           console.log(err)
         else {
-          console.log(data);
+          console.log('feedback response',data);
           setFeedback({ breakfast: data.breakfast, lunch: data.lunch, dinner: data.dinner })
         }
       })
