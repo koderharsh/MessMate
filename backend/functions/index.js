@@ -30,7 +30,7 @@ app.get("/responses", isStaff, getResponses);
 app.post("/response", isStudent, postResponse);
 
 // Prior absence notif routes.
-app.get("/absentees",isStaff, testware, getAbsentees);
+app.get("/absentees", isStaff, testware, getAbsentees);
 app.post("/absentees", isStudent, testware, postAbsentees);
 
 // Rating and review routes.
@@ -40,6 +40,7 @@ app.post("/feedback", isStudent, testware, postFeedback);
 //Menu Routes
 
 app.post("/menu", isStaff, postMenu);
-app.get("/menu", isStudent, getMenu);
+app.get("/menu/staff", isStaff, getMenu);
+app.get("/menu/student", isStudent, getMenu);
 
 exports.api = functions.https.onRequest(app);
