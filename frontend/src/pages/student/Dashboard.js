@@ -1,9 +1,36 @@
 import React,{useState,useEffect} from "react";
 import {isAuthenticated,postAbsentee,postFeedback,getMenu} from "../../util/studentApi";
+import firebase from "../../firebase";
+import {vapidKey} from "../../vapidKey";
+import {postFCM} from "../../util/notifApi";
 
 const Dashboard=()=>{
   const token=isAuthenticated()&&isAuthenticated().studenttoken;
   const [absentee,setAbsentee]=useState("");
+  useEffect(()=>{
+    const msg=firebase.messaging();
+    msg.requestPermission().then(()=>{
+      return msg.getToken({ vapidKey});
+    }).then((data)=>{
+      //console.log(data)
+      if(localStorage.getItem("fcm")){
+        if(JSON.parse(localStorage.getItem("fcm"))===data)
+        console.log("Already in db")
+        else {
+          localStorage.removeItem("jwt");
+          localStorage.setItem("fcm",JSON.stringify(data))
+          postFCM({token:data})
+        }
+      }else{
+          localStorage.setItem("fcm",JSON.stringify(data))
+          postFCM({token:data})
+      }
+    })
+  },[])
+  firebase.messaging().onMessage((payload) => {
+    console.log('Message received. ', payload);
+    // ...
+  });
 
   const [feedback,setFeedback]=useState({
     meal:"",
