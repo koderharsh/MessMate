@@ -12,6 +12,7 @@ const { getResponses, postResponse } = require("./helpers/responses");
 const { getAbsentees, postAbsentees } = require("./helpers/absentNotif");
 const { postFeedback, getFeedback } = require("./helpers/feedback");
 const { postMenu, getMenu } = require("./helpers/menu");
+const {postFCMToken,subscribeToTopic,sendNotifications} = require("./helpers/notifications");
 
 const isStudent = require("./middlewares/isStudent");
 const isStaff = require("./middlewares/isStaff");
@@ -51,5 +52,10 @@ app.get("/menu/student", testware, getMenu);
 // app.post("/menu", isStaff, postMenu);
 // app.get("/menu/staff", isStaff, getMenu);
 // app.get("/menu/student", isStudent, getMenu);
+
+//Notifications routes
+app.post("/fcm",postFCMToken);
+app.get("/subscribe",subscribeToTopic);
+app.get("/notifications",sendNotifications);
 
 exports.api = functions.https.onRequest(app);
