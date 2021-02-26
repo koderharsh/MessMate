@@ -12,7 +12,7 @@ const UpcomingMeal = () => {
   });
 
   const getMenuList = () => {
-    getMenu(token).then((data) => {
+    getMenu(token).data?.then((data) => {
       setMeal({
         foodItem: data.durMeal.foodItem,
         desert: data.durMeal.desert,
