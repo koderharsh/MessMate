@@ -26,21 +26,30 @@ app.post("/signup/student", studentSignup);
 app.post("/login/student", studentLogin);
 
 //Response routes
-app.get("/responses", isStaff, getResponses);
-app.post("/response", isStudent, postResponse);
+app.get("/responses", testware, getResponses);
+app.post("/response", testware, postResponse);
+// app.get("/responses", isStaff, getResponses);
+// app.post("/response", isStudent, postResponse);
 
 // Prior absence notif routes.
-app.get("/absentees", isStaff, testware, getAbsentees);
-app.post("/absentees", isStudent, testware, postAbsentees);
+app.get("/absentees", testware, getAbsentees);
+app.post("/absentees", testware, postAbsentees);
+// app.get("/absentees", isStaff, testware, getAbsentees);
+// app.post("/absentees", isStudent, testware, postAbsentees);
 
 // Rating and review routes.
-app.get("/feedback", isStaff, testware, getFeedback);
-app.post("/feedback", isStudent, testware, postFeedback);
+app.get("/feedback", testware, getFeedback);
+app.post("/feedback", testware, postFeedback);
+// app.get("/feedback", isStaff, testware, getFeedback);
+// app.post("/feedback", isStudent, testware, postFeedback);
 
 //Menu Routes
 
-app.post("/menu", isStaff, postMenu);
-app.get("/menu/staff", isStaff, getMenu);
-app.get("/menu/student", isStudent, getMenu);
+app.post("/menu", testware, postMenu);
+app.get("/menu/staff", testware, getMenu);
+app.get("/menu/student", testware, getMenu);
+// app.post("/menu", isStaff, postMenu);
+// app.get("/menu/staff", isStaff, getMenu);
+// app.get("/menu/student", isStudent, getMenu);
 
 exports.api = functions.https.onRequest(app);
