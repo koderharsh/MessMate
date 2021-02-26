@@ -27,8 +27,10 @@ app.post("/signup/student", studentSignup);
 app.post("/login/student", studentLogin);
 
 //Response routes
-app.get("/responses", isStaff, getResponses);
-app.post("/response", isStudent, postResponse);
+app.get("/responses", testware, getResponses);
+app.post("/response", testware, postResponse);
+// app.get("/responses", isStaff, getResponses);
+// app.post("/response", isStudent, postResponse);
 
 // Prior absence notif routes.
 app.get("/absentees", isStaff, testware, getAbsentees);
