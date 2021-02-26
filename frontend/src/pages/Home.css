@@ -1,0 +1,60 @@
+#navright{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navright_button{
+    margin:6px 14px ;
+    padding: 13px 15px;
+    width: 100px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+    background-color: rgb(255, 68, 0);
+    font-size: 15px;
+}
+
+#card4{
+    margin-top: 5rem;
+}
+
+.home_intro{
+    position: fixed;
+    left: 2rem;
+    top: 12rem;
+    width:80%;
+    padding: 25px 15px;
+    z-index: 10;
+    background-color: rgba(121, 121, 121, 0.199);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.app_name{
+    color: orangered;
+    font-size: 34px;
+    font-weight: bolder;
+}   
+
+.app_desc{
+    margin-top: 3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 800px){
+    .home_intro{
+        width:50%;
+    }
+    .app_name{
+        font-size: 54px;
+        font-weight: bolder;
+    }   
+    .app_desc{
+        margin-top: 4rem;
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 3rem;
+    }
+    
+}

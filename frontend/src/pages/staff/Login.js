@@ -43,6 +43,11 @@ const Login=()=>{
 //ugly demo
   return(
     <div>
+      <div id="navbar-wrapper">
+          <span id="navleft"><i className="lni lni-dinner"></i> MESSMATE</span>
+          <span id="navright">
+          </span>
+      </div>
     <form>
     <input name="email" type="email" value={email} onChange={handleChange("email")}/>
     <input name="password" type="password" value={password} onChange={handleChange("password")}/>

@@ -1,18 +1,21 @@
 const { db } = require('../admin')
 
 const getFeedback = async function (req, res) {
-    let currentDate = new Date().toDateString()
+    let currentDate = req.body.testdate || new Date().toDateString()
     
     try {
         const doc = await db.collection(`feedback`).doc(`${req.user.hostelId}: ${currentDate}`).get()
-        if (!doc.exists) res.json({ 'error': 'no records found.' })
+        if (!doc.exists) {
+            res.json({ 'error': 'no records found.' })
+            return
+        }
         res.json(doc.data())
     } catch (err) { console.log(err); res.json({ 'error': err }) }
 } 
 
 const postFeedback = async function (req, res) {
-    let currentDate = new Date().toDateString()
-    
+    let currentDate = req.body.testdate || new Date().toDateString()
+        
     try {
         let doc = await db.collection(`feedback`).doc(`${req.user.hostelId}: ${currentDate}`).get()
         if(!doc.exists) await db.collection(`feedback`).doc(`${req.user.hostelId}: ${currentDate}`).set({ 

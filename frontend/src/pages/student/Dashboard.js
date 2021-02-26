@@ -62,6 +62,11 @@ const getmenu=()=>{
 
 return(
     <div>
+      <div id="navbar-wrapper">
+          <span id="navleft"><i className="lni lni-dinner"></i> MESSMATE</span>
+          <span id="navright">
+          </span>
+      </div>
     {isAuthenticated()?(
       <div>
     Authenticated user

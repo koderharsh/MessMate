@@ -1,5 +1,6 @@
 const { admin,db } = require('../admin');
 const firebase=require("firebase");
+
 exports.postFCMToken=(req,res)=>{
 const newFCMToken={
       token:req.body.token
@@ -16,32 +17,39 @@ const newFCMToken={
     })
 }
 
-exports.sendNotification=(req,res)=>{
-  var registrationTokens = [];
-  db.collection('fcm')
-  .get()
-  .then(data=>{
-    data.forEach(doc=>{
-     registrationTokens.push(
-      doc.data().token,
-    );
+exports.subscribeToTopic=(req,res)=>{
+  const topic="MTB";
+  var registrationTokens = ["--paste your token--"];
+
+  admin.messaging().subscribeToTopic(registrationTokens, topic)
+    .then(function(response) {
+
+      console.log('Successfully subscribed to topic:', response);
     })
-})
-.then(()=>{
-const message = {
-  data: {score: '850', time: '2:45'},
-  tokens: registrationTokens,
+    .catch(function(error) {
+      console.log('Error subscribing to topic:', error);
+    });
+
 }
-admin.messaging().sendMulticast(message)
+
+exports.sendNotifications=(req,res)=>{
+  var topic = 'MTB';
+
+var message = {
+  data: {
+    title: 'MessMate',
+    desciption: 'Demo'
+  },
+  topic: topic
+};
+
+admin.messaging().send(message)
   .then((response) => {
-    return res.json(response.successCount + ' messages were sent successfully');})
 
-
-})
-
-  .catch(err=>console.error(err));
-
-
-
+  res.status(200).json(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 }

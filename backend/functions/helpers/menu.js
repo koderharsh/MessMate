@@ -159,8 +159,9 @@ const getMenu = async (req, res) => {
     else if (durTime > 15 && durTime <= 22) timeMeal = "dinner";
     else timeMeal = "breakfast";
     const durMeal = Meal[timeMeal];
-    console.log(durMeal);
-    res.send({ Meal, durMeal });
+
+    const completeMeal = doc.data();
+    res.send({ Meal, durMeal, completeMeal });
   } catch (e) {
     res.status(500);
   }

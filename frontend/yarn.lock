@@ -7528,6 +7528,11 @@
     "prelude-ls" "~1.1.2"
     "type-check" "~0.3.2"
 
+"light-icons@^1.0.2":
+  "integrity" "sha512-Bbze3xNCR6gEGba9+uKbVAmWDGlLB7iAjoZzRZVNsIn7j4Q3AoIfDZkB/lVePMSNq/A1I4vjQQ2kv76NJrmo9A=="
+  "resolved" "https://registry.npmjs.org/light-icons/-/light-icons-1.0.2.tgz"
+  "version" "1.0.2"
+
 "lines-and-columns@^1.1.6":
   "integrity" "sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA="
   "resolved" "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.1.6.tgz"
