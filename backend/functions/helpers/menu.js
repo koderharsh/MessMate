@@ -154,14 +154,15 @@ const getMenu = async (req, res) => {
 
     const Meal = doc.data()[`${Day}`];
     let durTime = new Date().getHours();
+    console.log(durTime);
     let timeMeal = "";
-    if (durTime > 10 && durTime <= 15) timeMeal = "lunch";
-    else if (durTime > 15 && durTime <= 22) timeMeal = "dinner";
+    if (durTime >= 10 && durTime <= 15) timeMeal = "lunch";
+    else if (durTime >= 15 && durTime <= 22) timeMeal = "dinner";
     else timeMeal = "breakfast";
     const durMeal = Meal[timeMeal];
 
     const completeMeal = doc.data();
-    res.send({ Meal, durMeal, completeMeal });
+    res.send({ timeMeal, Meal, durMeal, completeMeal, Day });
   } catch (e) {
     res.status(500);
   }

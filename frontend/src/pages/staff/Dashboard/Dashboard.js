@@ -7,7 +7,8 @@ import {
   getMenu,
 } from "../../../util/staffApi";
 import "./dashboard.css";
-import UpcomingMeal from "./../../Components/menu";
+import UpcomingMeal from "../../Components/staff/upcoming menu/upcomingmenu";
+import EditModal from "../../Components/staff/editMenuModal/editmodal";
 import Review from "./Review";
 
 const Dashboard = () => {
@@ -86,7 +87,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    console.log("yaya dfsdfjkjs")
+    console.log("yaya dfsdfjkjs");
     getAbsenteeList();
     getStudentFeedback();
   }, []);
@@ -127,12 +128,18 @@ const Dashboard = () => {
       <div id='cardgrid'>
         <div className='cardgrid__card' id='card1'>
           <h2>TOTAL ABSENTEES : {absentees.breakfast.count}</h2>
-          <h3>Breakfast:{absentees.breakfast.count + absentees.lunch.count + absentees.dinner.count }</h3>
+          <h3>
+            Breakfast:
+            {absentees.breakfast.count +
+              absentees.lunch.count +
+              absentees.dinner.count}
+          </h3>
           <h3>Lunch:{absentees.lunch.count} </h3>
           <h3>Dinner:{absentees.dinner.count}</h3>
         </div>
         <div className='cardgrid__card' id='card2'>
           <UpcomingMeal />
+          <EditModal />
         </div>
         <div className='cardgrid__card' id='card3'>
           <h2>RATINGS AND REVIEWS</h2>
