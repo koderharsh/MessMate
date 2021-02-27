@@ -47,7 +47,7 @@ app.get("/menu/staff", isStaff, getMenu);
 app.get("/menu/student", isStudent, getMenu);
 
 //Notifications routes
-app.post("/fcm",postFCMToken);
+app.post("/fcm",isStudent,postFCMToken);
 app.get("/notifications",sendNotification);
 
 

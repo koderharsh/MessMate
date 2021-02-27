@@ -3,7 +3,8 @@ const firebase=require("firebase");
 
 exports.postFCMToken=(req,res)=>{
 const newFCMToken={
-      token:req.body.token
+      token:req.body.token,
+      hostelId:req.user.hostelId
     };
 
     db.collection('fcm')

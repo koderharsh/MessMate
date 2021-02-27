@@ -5,7 +5,7 @@ import {vapidKey} from "../../vapidKey";
 import {postFCM} from "../../util/notifApi";
 
 const Dashboard=()=>{
-  const token=isAuthenticated()&&isAuthenticated().studenttoken;
+  const idtoken=isAuthenticated()&&isAuthenticated().studenttoken;
   const [absentee,setAbsentee]=useState("");
   useEffect(()=>{
     const msg=firebase.messaging();
@@ -17,13 +17,13 @@ const Dashboard=()=>{
         if(JSON.parse(localStorage.getItem("fcm"))===data)
         console.log("Already in db")
         else {
-          localStorage.removeItem("jwt");
+          localStorage.removeItem("fcm");
           localStorage.setItem("fcm",JSON.stringify(data))
-          postFCM({token:data})
+          postFCM(idtoken,{token:data})
         }
       }else{
           localStorage.setItem("fcm",JSON.stringify(data))
-          postFCM({token:data})
+          postFCM(idtoken,{token:data})
       }
     })
   },[])
@@ -49,7 +49,7 @@ const Dashboard=()=>{
   const postAbsenteeList=(event)=>{
     event.preventDefault()
     setAbsentee(...absentee);
-    postAbsentee(token,absentee)
+    postAbsentee(idtoken,absentee)
     .then((data,err)=>{
     if(err)
     console.log(err)
@@ -66,7 +66,7 @@ const Dashboard=()=>{
 const postStudentFeedback=(event)=>{
   event.preventDefault()
   setAbsentee({...feedback});
-  postFeedback(token,{meal,rating,review})
+  postFeedback(idtoken,{meal,rating,review})
   .then((data,err)=>{
     if(err)
     console.log(err)
@@ -77,7 +77,7 @@ const postStudentFeedback=(event)=>{
 }
 
 const getmenu=()=>{
-  getMenu(token)
+  getMenu(idtoken)
   .then((data,err)=>{
     if(err)
     console.log(err)

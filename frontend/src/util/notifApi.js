@@ -1,9 +1,10 @@
-export const postFCM = (token) => {
+export const postFCM = (idtoken,token) => {
   return fetch(`/fcm`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${idtoken}`,
     },
     body: JSON.stringify(token),
   })
