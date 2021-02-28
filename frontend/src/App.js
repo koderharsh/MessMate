@@ -13,7 +13,7 @@ import StaffLogin from "./pages/staff/Login";
 import StudentSignup from "./pages/student/Signup";
 import StudentLogin from "./pages/student/Login";
 import StaffDashboard from "./pages/staff/Dashboard/Dashboard.js";
-import StudentDashboard from "./pages/student/Dashboard";
+import StudentDashboard from "./pages/student/Dashboard/Dashboard";
 
 function App() {
   return (

@@ -50,6 +50,6 @@ app.post("/feedback", isStudent, testware, postFeedback);
 // app.get("/menu/student", testware, getMenu);
 app.post("/menu", isStaff, postMenu);
 app.get("/menu/staff", isStaff, getMenu);
-app.get("/menu/student", isStudent, getMenu);
+app.get("/menu/student", testware, getMenu);
 
 exports.api = functions.https.onRequest(app);
