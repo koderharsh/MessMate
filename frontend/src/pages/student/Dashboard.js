@@ -42,14 +42,13 @@ const Dashboard=()=>{
 
   const [menu,setMenu]=useState({});
 
-  const handleAbsentee=(name)=>(event)=>{
-    setAbsentee({[name]:event.target.value});
+  const handleAbsentee=(event)=>{
+    setAbsentee(event.target.value);
   };
 
   const postAbsenteeList=(event)=>{
     event.preventDefault()
-    setAbsentee(...absentee);
-    postAbsentee(idtoken,absentee)
+    postAbsentee(idtoken,{meal:absentee})
     .then((data,err)=>{
     if(err)
     console.log(err)
