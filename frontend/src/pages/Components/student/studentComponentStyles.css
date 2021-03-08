@@ -1,10 +1,10 @@
-h3 {
+.student-card-heading {
     font-size: 2em;
     font-weight: 400;
     font-family: 'Open Sans';
 }
 
-h3::after {
+.student-card-heading::after {
     width: 70%;
     height: 2px;
     content: "";
@@ -12,6 +12,15 @@ h3::after {
     position: relative;
     top: 8px;
     background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0);
+}
+
+@media only screen and (max-width: 900px) {
+    .student-card-heading {
+        font-size: 1.75em;
+        font-weight: 400;
+        /* color: rgba(0, 0, 0, 0.7); */
+    }   
 }
 
 /* absence component styles */
@@ -32,7 +41,7 @@ h3::after {
 .absence__form > select {
     background-color: rgba(0,0,0,0.5);
     color: rgba(255, 255, 255, 0.9);
-    border: solid 4px rgba(255, 255, 255, 0.8);
+    border: solid 2px rgba(255, 255, 255, 0.6);
     padding: 8px;
     width: calc(100% - 120px);
     min-width: max-content;
@@ -43,7 +52,7 @@ h3::after {
 
 .absence__form .lni-chevron-right {
     position: relative;
-    background-color: rgba(255, 61, 12, 0.9);
+    background-color: rgba(var(--accent), 0.9);
     color: white;
     border-radius: 50%;
     padding: 14px;
@@ -85,7 +94,7 @@ h3::after {
     display: block;
     background-color: rgba(0,0,0,0.5);
     color: rgba(255, 255, 255, 1);
-    border: solid 4px rgba(255, 255, 255, 0.8);
+    border: solid 2px rgba(255, 255, 255, 0.6);
     padding: 12px;
     height: 150px;
     width: 100%;
@@ -106,27 +115,39 @@ h3::after {
 }
 
 .feedback__form > .feedback__button {
-    background-color: rgba(255, 61, 12, 0.9);
+    background-color: rgba(var(--accent), 0.9);
     border-radius: 8px;
     padding: 6px 40px;
     margin: 20px 0px;
 }
 
 .feedback__form > .feedback__button:hover {
-    background-color: rgba(255, 61, 12, 0.7);
+    background-color: rgba(var(--accent), 0.7);
 
+}
+
+@media only screen and (max-width: 1300px) {
+    .feedback__form > textarea {
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .feedback__form > textarea {
+        height: 150px;
+    }
 }
 
 /* feedback component styles END */
 
 /* menu component styles */
 .menu__grid {
-    margin-top: 28px;
+    margin-top: 30px;
     height: calc(100vh - 280px);
 }
 
 .menu__grid__card {
-    height: calc(33.34% - 17px);
+    height: calc(33.34% - 0px);
     opacity: 0.85;
     border-radius: 12px;
     margin-bottom: 20px;
@@ -136,6 +157,22 @@ h3::after {
     overflow: hidden;
 }
 
+.menu__grid__card:nth-child(1)
+{
+    opacity: 0.95;
+    background: rgb(0,255,241);
+    background: linear-gradient(166deg, rgb(0, 228, 216) 0%, rgb(195, 222, 255) 100%);
+}
+.menu__grid__card:nth-child(2)
+{
+    background: rgb(255,227,0);
+    background: linear-gradient(166deg, rgba(255,227,0,1) 0%, rgba(255,160,103,1) 100%);
+}
+.menu__grid__card:nth-child(3)
+{
+    background: rgb(58,124,223);
+    background: linear-gradient(166deg, rgba(58,124,223,1) 0%, rgba(17,26,113,1) 100%);
+}
 .menu__grid__card:nth-child(1)
 {
     opacity: 0.95;
@@ -198,21 +235,21 @@ h3::after {
 }
 
 .icon {
-    transform: scale(7.3);
+    transform: scale(6);
 
     float: right;
     position: relative;
-    top: 70px;
-    left: -60px;
+    top: 80px;
+    left: -50px;
     opacity: 0.2;
 }
 
 .icon--moon {
-    left: -40px;
+    left: -35px;
 }
 
 
-@media only screen and (max-width: 750px)
+@media only screen and (max-width: 900px)
 {
     .menu__card {
         height: 150px;

@@ -17,6 +17,8 @@ import StaffDashboard from "./pages/staff/Dashboard/Dashboard.js";
 import StudentDashboard from "./pages/student/Dashboard/Dashboard";
 
 function App() {
+  let num = Math.floor(Math.random() * 5)
+  localStorage.setItem('accentNum', num)
   return (
     <Router>
 <div>

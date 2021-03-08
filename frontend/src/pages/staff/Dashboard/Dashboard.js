@@ -9,10 +9,20 @@ import {
 import {
 postStaffNotification
 } from "../../../util/notifApi";
-import "./dashboard.css";
+// import "./dashboard.css";
+// import "./dashboard.css";
 import UpcomingMeal from "../../Components/staff/upcoming menu/upcomingmenu";
 import EditModal from "../../Components/staff/editMenuModal/editmodal";
 import Review from "./Review";
+
+import "../../student/Dashboard/dashboard.css"
+import redImage from '../../student/Dashboard/raspberries.jpg'
+import greenImage from '../../student/Dashboard/grapes.jpg'
+import blueImage from '../../student/Dashboard/blueberry1.jpg'
+import orangeImage from '../../student/Dashboard/pasta.jpg'
+import yellowImage from '../../student/Dashboard/mango1.jpg'
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import IconButton from '@material-ui/core/IconButton';
 
 const Dashboard = () => {
   const token = isAuthenticated() && isAuthenticated().stafftoken;
@@ -109,6 +119,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
+    applyAccent()
     console.log("yaya dfsdfjkjs");
     getAbsenteeList();
     getStudentFeedback();
@@ -138,30 +149,35 @@ const Dashboard = () => {
 
   return (
     <div id='dashboard-wrapper'>
-      <div id='navbar-wrapper'>
-        <span id='navleft'>
-          <i className='lni lni-dinner'></i> MESSMATE
-        </span>
-        <span id='navright'>
-          8:42PM | GJRBWN <i className='lni lni-power-switch'></i>
-        </span>
+      <div className="dashboard__title__wrapper">
+        <div>Messmate</div>
+        <div>
+          STAFF • GJRBWN 
+          <div>
+          <IconButton aria-label="delete">
+              <PowerSettingsNewIcon
+              className="logoutButton"
+          />
+          </IconButton>
+          </div>
+        </div>
       </div>
 
       <div id='cardgrid'>
-        <div className='cardgrid__card' id='card1'>
-          <h2>TOTAL ABSENTEES : {absentees.breakfast.count}</h2>
+         <div className='cardgrid__card' id='card1'>
+          {/* <h2>TOTAL ABSENTEES : {absentees?.breakfast.count}</h2>
           <h3>
             Breakfast:
-            {absentees.breakfast.count +
-              absentees.lunch.count +
-              absentees.dinner.count}
+            {absentees?.breakfast.count +
+              absentees?.lunch.count +
+              absentees?.dinner.count}
           </h3>
-          <h3>Lunch:{absentees.lunch.count} </h3>
-          <h3>Dinner:{absentees.dinner.count}</h3>
+          <h3>Lunch:{absentees?.lunch.count} </h3>
+          <h3>Dinner:{absentees?.dinner.count}</h3> */}
         </div>
         <div className='cardgrid__card' id='card2'>
-          <UpcomingMeal />
-          <EditModal />
+          {/* <UpcomingMeal />  */}
+           {/* <EditModal /> */}
         </div>
         <div className='cardgrid__card' id='card3'>
           <h2>RATINGS AND REVIEWS</h2>
@@ -175,5 +191,26 @@ const Dashboard = () => {
     </div>
   );
 };
+
+function applyAccent() {
+  let accentNum = localStorage.getItem('accentNum') || 0
+  let accentCodes = ['235, 50, 50', '0, 200, 33', '232, 232, 0', '0, 96, 206', '255, 61, 12']
+  let backgroundImages = [redImage, greenImage, yellowImage, blueImage, orangeImage]
+  document.querySelector(':root').style.setProperty('--accent', accentCodes[accentNum])
+  document.getElementById('messImg-wrapper').style.backgroundImage = `url(${backgroundImages[accentNum]})`
+  document.getElementById('messImg-wrapper').style.backgroundSize = "cover"
+
+  if(window.innerWidth <= 1300) {
+    document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
+    document.body.style.backgroundSize = "cover"
+  }
+  document.body.onresize = () => {
+    if(window.innerWidth <= 1300) {
+      document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
+      document.body.style.backgroundSize = "cover"
+    }
+    else document.body.style.backgroundImage = "none"
+  }
+}
 
 export default Dashboard;

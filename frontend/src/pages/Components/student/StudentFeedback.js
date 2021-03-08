@@ -13,7 +13,7 @@ function StudentFeedback() {
 
     return (
         <div>
-            <h3>Send feedback for the last meal</h3>
+            <h3 className="student-card-heading">Send feedback for the last meal</h3>
             <div className="feedback__form">
                 <Rating 
                 size="large"
