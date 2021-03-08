@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
+
+.menu-box {
+  background: url("./Menu.jpg") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  height: 85%;
+  width: 100%;
+  position: relative;
+  font-size: 62.5%;
+  font-family: "Walter Turncoat", cursive;
+}
+.box {
+  height: 63%;
+  width: 34%;
+  position: absolute;
+  top: 28%;
+  left: 32%;
+  font-weight: 800;
+  font-size: 1rem;
+  color: black;
+}

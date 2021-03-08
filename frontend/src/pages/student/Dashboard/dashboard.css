@@ -109,12 +109,11 @@ body {
   border-radius: 40px;
   backdrop-filter: blur(20px);
   /* border: solid; */
+  text-align: left;
   margin: 10px 10px;
-  /* font-family: 'Roboto'; */
-  padding: 20px;
+  font-family: 'Roboto';
+  padding: 40px;
   color: rgba(41, 41, 41, 0.678);
-  font-family: cursive;
-  text-align: center;
 }
 
 .cardgrid__card > h2 {
@@ -123,6 +122,7 @@ body {
 @media only screen and (max-width: 1300px) {
   #messImg-wrapper {
     transform: rotate(0deg) scale(1) translateY(0px) translateX(0px);
+    /* transform: none; */
   }
 }
 @media only screen and (max-width: 1300px) {
@@ -136,13 +136,24 @@ body {
 @media only screen and (max-width: 800px) {
   body {
     height: max-content;
+    overflow: visible;
+    padding-bottom: 30px;
   }
+  
+  #messImg-wrapper {
+    position: sticky !important;
+    /* position: -webkit-sticky; */
+    top:0vh;
+    /* height: 100%; */
+  }
+
   #cardgrid {
     grid-template-rows: max-content max-content max-content;
     grid-template-columns: 100%;
     padding: 10px 0px;
     width: 100vw;
     margin-left: 0;
+    margin-bottom: 30px;
   }
 
   .cardgrid__card {
@@ -189,13 +200,14 @@ body {
   /* background: linear-gradient(124deg, rgba(219, 4, 4, 0.794) 0%, rgba(219, 4, 4, 0.794) 10%, rgba(80, 19, 0, 0.295) 100%); */
   background: linear-gradient(
     124deg,
-    rgba(255, 61, 12, 0.9) 0%,
-    rgba(255, 61, 12, 0.9) 60%,
+    rgba(255, 61, 12, 1) 0%,
+    rgba(255, 61, 12, 1) 60%,
     rgba(255, 61, 12, 0.4) 100%
   );
   /* background-color: rgba(255, 61, 12) ; */
   min-width: max-content;
   border-radius: 0 0 20px 0;
+  box-shadow: 1px 2px 10px -4px rgba(0, 0, 0, 0.4);
 }
 
 #navleft .lni {
@@ -214,12 +226,17 @@ body {
     width: 100vw;
     display: block;
     border-radius: 0;
+    position: sticky;
+    z-index: 20;
+    top: 0px;
+    box-shadow: none;
     background-color: rgba(255, 61, 12, 1);
   }
   #navright {
     display: flex;
     justify-content: space-evenly;
     float: unset;
+    /* text-align: left; */
     color: rgba(255, 61, 12, 0.794);
     background-color: #ffffff;
   }

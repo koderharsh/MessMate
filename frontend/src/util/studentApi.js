@@ -90,7 +90,7 @@ export const postFeedback=(token,feedback)=>{
 }
 
 export const getMenu=(token)=>{
-  return fetch(`/menu`,{
+  return fetch(`/menu/student`,{
     method:"GET",
     headers:{
       Accept:"application/json",

@@ -17,7 +17,7 @@ exports.staffSignup=(req,res)=>{
   const { valid, errors } = validateSignup(newStaff);
   if (!valid) return res.status(400).json(errors);
 
-  let stafftoken,staffId;
+  let stafftoken,staffId,hostelId;
   firebase.auth().createUserWithEmailAndPassword(newStaff.email,newStaff.password)
   .then(data=>{
     staffId=data.user.uid;
@@ -33,11 +33,11 @@ exports.staffSignup=(req,res)=>{
       createdAt:new Date().toISOString(),
       staffId
     };
-
+   hostelId=newStaff.hostelId;
     return db.doc(`staff/${staffId}`).set(staffCredentials);
 })
 .then(()=>{
-  return res.status(201).json({stafftoken,staffId});
+  return res.status(201).json({stafftoken,staffId,hostelId});
 })
   .catch(err=>{
     console.error(err);
@@ -57,7 +57,7 @@ exports.staffLogin=(req,res)=>{
   const { valid, errors } = validateLogin(staff);
   if (!valid) return res.status(400).json(errors);
 
- let stafftoken,staffId;
+ let stafftoken,staffId,hostelId;
   firebase.auth().signInWithEmailAndPassword(staff.email,staff.password)
   .then(data=>{
     staffId=data.user.uid;
@@ -65,7 +65,10 @@ exports.staffLogin=(req,res)=>{
   })
   .then(token=>{
     stafftoken=token;
-    return res.json({stafftoken,staffId});
+    db.collection(`staff`).doc(`${staffId}`).get().then(doc=>{
+        hostelId=doc.data().hostelId;
+        return res.json({stafftoken,staffId,hostelId});
+      })
   })
   .catch(err=>{
     console.error(err);

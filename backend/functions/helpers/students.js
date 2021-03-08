@@ -17,7 +17,7 @@ exports.studentSignup=(req,res)=>{
   if (!valid) return res.status(400).json(errors);
 
 
-  let studenttoken,studentId;
+  let studenttoken,studentId,hostelId;
   firebase.auth().createUserWithEmailAndPassword(newStudent.email,newStudent.password)
   .then(data=>{
     studentId=data.user.uid;
@@ -33,11 +33,11 @@ exports.studentSignup=(req,res)=>{
       createdAt:new Date().toISOString(),
       studentId
     };
-
+    hostelId=newStudent.hostelId;
     return db.doc(`student/${studentId}`).set(studentCredentials);
   })
   .then(()=>{
-    return res.status(201).json({studenttoken,studentId});
+    return res.status(201).json({studenttoken,studentId,hostelId});
   })
   .catch(err=>{
     console.error(err);
@@ -57,15 +57,20 @@ exports.studentLogin=(req,res)=>{
   const { valid, errors } = validateLogin(student);
   if (!valid) return res.status(400).json(errors);
 
-  let studenttoken,studentId;
+  let studenttoken,studentId,hostelId;
   firebase.auth().signInWithEmailAndPassword(student.email,student.password)
   .then(data=>{
     studentId=data.user.uid;
+
     return data.user.getIdToken();
   })
   .then(token=>{
     studenttoken=token;
-    return res.json({studenttoken,studentId});
+    db.collection(`student`).doc(`${studentId}`).get().then(doc=>{
+        hostelId=doc.data().hostelId;
+        return res.json({studenttoken,studentId,hostelId});
+      })
+
   })
   .catch(err=>{
     console.error(err);

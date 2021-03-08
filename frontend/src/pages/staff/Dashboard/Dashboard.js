@@ -10,7 +10,9 @@ import {
 postStaffNotification
 } from "../../../util/notifApi";
 import "./dashboard.css";
-import UpcomingMeal from "./../../Components/menu";
+import UpcomingMeal from "../../Components/staff/upcoming menu/upcomingmenu";
+import EditModal from "../../Components/staff/editMenuModal/editmodal";
+import Review from "./Review";
 
 const Dashboard = () => {
   const token = isAuthenticated() && isAuthenticated().stafftoken;
@@ -40,7 +42,7 @@ const Dashboard = () => {
   const { day, meal, foodItem, desert } = menu;
 
   const getAbsenteeList = () => {
-    getAbsentees(token).then((data, err) => {
+    getAbsentees(token).data?.then((data, err) => {
       if (err) console.log(err);
       else {
         setAbsentees({
@@ -107,6 +109,7 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
+    console.log("yaya dfsdfjkjs");
     getAbsenteeList();
     getStudentFeedback();
   }, []);
@@ -146,16 +149,23 @@ const Dashboard = () => {
 
       <div id='cardgrid'>
         <div className='cardgrid__card' id='card1'>
-          <h2>TOTAL ABSENTEES : 35</h2>
-          <h3>Breakfast:5</h3>
-          <h3>Lunch:10 </h3>
-          <h3>Dinner:20</h3>
+          <h2>TOTAL ABSENTEES : {absentees.breakfast.count}</h2>
+          <h3>
+            Breakfast:
+            {absentees.breakfast.count +
+              absentees.lunch.count +
+              absentees.dinner.count}
+          </h3>
+          <h3>Lunch:{absentees.lunch.count} </h3>
+          <h3>Dinner:{absentees.dinner.count}</h3>
         </div>
         <div className='cardgrid__card' id='card2'>
           <UpcomingMeal />
+          <EditModal />
         </div>
         <div className='cardgrid__card' id='card3'>
           <h2>RATINGS AND REVIEWS</h2>
+          {/* {feedback.breakfast.rating.ratingAverage}  */}
         </div>
       </div>
 

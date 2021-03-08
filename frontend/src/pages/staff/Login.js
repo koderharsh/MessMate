@@ -1,7 +1,10 @@
 import React,{useState} from "react";
 import {login,authenticate} from "../../util/staffApi";
+import {useHistory} from 'react-router-dom'
 
 const Login=()=>{
+
+  const history=useHistory();
 
   //initialised state
   const [staff,setStaff]=useState({
@@ -36,6 +39,7 @@ const Login=()=>{
         password:"",
         error:{}
     })
+    history.push('/dashboard/staff');
     });
   }
 })

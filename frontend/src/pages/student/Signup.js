@@ -1,9 +1,9 @@
 import React,{useState} from "react";
 import {signup,authenticate} from "../../util/studentApi";
-
+import {useHistory} from 'react-router-dom';
 
 const Signup=()=>{
-
+const history=useHistory();
   //initialised state
   const [student,setStudent]=useState({
     email:"",
@@ -46,6 +46,7 @@ const Signup=()=>{
         error:{}
     })
     });
+    history.push("/dashboard/student")
   }
 })
 }
