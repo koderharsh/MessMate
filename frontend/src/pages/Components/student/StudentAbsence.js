@@ -9,7 +9,7 @@ function StudentAbsence() {
 
     return (
         <div>
-            <h3>Planning to skip the mess today?</h3>
+            <h3 className="student-card-heading">Planning to skip the mess today?</h3>
             <div className="absence__tiptext">
                  Be sure to inform the mess staff about it.
             </div>

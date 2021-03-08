@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from "react";
 import './Home.css';
 import {Link} from 'react-router-dom';
+import {isAuthenticated as isStaffAuthenticated} from "../util/staffApi";
+import {isAuthenticated as isStudentAuthenticated} from "../util/studentApi";
 
 const Home=()=>{
   return(
@@ -9,8 +11,18 @@ const Home=()=>{
       <div id="navbar-wrapper">
           <span id="navleft"><i className="lni lni-dinner"></i> MESSMATE</span>
           <span id="navright">
-          <Link to="/login/student"><button className="navright_button" >Student</button></Link>
-          <Link to="/login/staff"><button className="navright_button" >Staff</button></Link>
+            {isStudentAuthenticated()&&isStudentAuthenticated().studenttoken!==""?(
+              <Link to="/dashboard/student"><button className="navright_button" >Student</button></Link>
+            ):(
+                <Link to="/login/student"><button className="navright_button" >Student</button></Link>
+            )}
+            {isStaffAuthenticated()&&isStaffAuthenticated().stafftoken!==""?(
+              <Link to="/dashboard/staff"><button className="navright_button" >Staff</button></Link>
+            ):(
+                <Link to="/login/staff"><button className="navright_button" >Staff</button></Link>
+            )}
+
+
           </span>
       </div>
 

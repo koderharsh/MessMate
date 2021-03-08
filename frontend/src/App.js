@@ -16,7 +16,13 @@ import StudentLogin from "./pages/student/Login";
 import StaffDashboard from "./pages/staff/Dashboard/Dashboard.js";
 import StudentDashboard from "./pages/student/Dashboard/Dashboard";
 
+//import routes
+import StaffRoute from "./routes/StaffRoute";
+import StudentRoute from "./routes/StudentRoute";
+
 function App() {
+  let num = Math.floor(Math.random() * 5)
+  localStorage.setItem('accentNum', num)
   return (
     <Router>
 <div>
@@ -26,8 +32,8 @@ function App() {
     <Route exact path="/signup/student" component={StudentSignup}/>
     <Route exact path="/login/staff" component={StaffLogin}/>
     <Route exact path="/login/student" component={StudentLogin}/>
-     <Route exact path="/dashboard/staff" component={StaffDashboard}/>
-    <Route exact path="/dashboard/student" component={StudentDashboard}/>
+     <StaffRoute path="/dashboard/staff" exact component={StaffDashboard}/>
+    <StudentRoute exact path="/dashboard/student" component={StudentDashboard}/>
   </Switch>
   </div>
   </Router>
