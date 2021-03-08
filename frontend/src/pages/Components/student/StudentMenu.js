@@ -11,11 +11,11 @@ function StudentMenu() {
     useEffect(async () => {
         try {
             let menuRes = await getMenu(token)
-            console.log(menuRes)
-            setMenu(menuRes)
+          //  console.log(menuRes)
+          //setMenu(menuRes)
         } catch (err) {console.log(err)}
     }, [token])
-    return (
+  return (
         <div>
             <h3>Today's menu</h3>
             <div className="menu__grid">
@@ -31,7 +31,7 @@ function StudentMenu() {
                     </div>
                 </div>
                 <div className="menu__grid__card">
-                    <div className="menu__mealname">Lunch <WbSunnyOutlinedIcon className="icon" /> </div> 
+                    <div className="menu__mealname">Lunch <WbSunnyOutlinedIcon className="icon" /> </div>
                     <div className="menu__card menu__fooditem">
                         <span>Main course</span>
                         {menu?.Meal?.lunch.foodItem}
@@ -39,7 +39,7 @@ function StudentMenu() {
                     <div className="menu__card menu__dessert">
                         <span>Dessert</span>
                         {menu?.Meal?.lunch.desert}
-                    </div>               
+                    </div>
                 </div>
                 <div className="menu__grid__card">
                     <div className="menu__mealname">Dinner <NightsStayOutlinedIcon className="icon icon--moon" /> </div>
