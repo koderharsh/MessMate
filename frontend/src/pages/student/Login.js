@@ -38,7 +38,7 @@ const Login=()=>{
         password:"",
         error:{}
     })
-    history.push('/dashboard/login');
+    history.push('/dashboard/student');
     });
   }
 })

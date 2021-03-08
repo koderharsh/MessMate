@@ -6,6 +6,9 @@ import {
   postMenu,
   getMenu,
 } from "../../../util/staffApi";
+import {
+postStaffNotification
+} from "../../../util/notifApi";
 import "./dashboard.css";
 import UpcomingMeal from "../../Components/staff/upcoming menu/upcomingmenu";
 import EditModal from "../../Components/staff/editMenuModal/editmodal";
@@ -31,6 +34,10 @@ const Dashboard = () => {
     foodItem: "",
     desert: "",
   });
+
+
+//to post body of notification by staff
+  const [description,setDescription]=useState("");
 
   const { day, meal, foodItem, desert } = menu;
 
@@ -85,6 +92,21 @@ const Dashboard = () => {
       }
     });
   };
+
+  const handleNotifChange=(event)=>{
+    setDescription(event.target.value)
+  }
+
+  const postNotif=(event)=>{
+    event.preventDefault();
+    postStaffNotification(token,{description}).then((data)=>{
+      if(data.error){
+        console.log(data.error)
+      }else{
+        console.log("Notifications send successfully!!")
+      }
+    })
+  }
 
   useEffect(() => {
     console.log("yaya dfsdfjkjs");

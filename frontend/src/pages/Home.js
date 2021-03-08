@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import './Home.css';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+
 const Home=()=>{
   return(
     <div id="dashboard-wrapper">
@@ -16,7 +17,7 @@ const Home=()=>{
       <div className="home_intro">
          <span className="app_name"><p>Welcome to</p> MessMate</span>
          <div className="app_desc">
-           hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adf hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adfhdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adfhdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adf  
+           hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adf hdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adfhdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adfhdfhdabfj fbasfbasjfb adfbbaskjfkajsf ffjbaksjfkajsbf akv askjvajbv  hdfhdabfj fbasfbasjfb adf
          </div>
       </div>
 

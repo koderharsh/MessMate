@@ -12,6 +12,8 @@ const { getResponses, postResponse } = require("./helpers/responses");
 const { getAbsentees, postAbsentees } = require("./helpers/absentNotif");
 const { postFeedback, getFeedback } = require("./helpers/feedback");
 const { postMenu, getMenu } = require("./helpers/menu");
+const {postFCMToken,sendNotification} = require("./helpers/notifications");
+const {postStaffNotification} = require("./helpers/staffNotification");
 
 const isStudent = require("./middlewares/isStudent");
 const isStaff = require("./middlewares/isStaff");
@@ -32,14 +34,10 @@ app.get("/responses", isStaff, getResponses);
 app.post("/response", isStudent, postResponse);
 
 // Prior absence notif routes.
-// app.get("/absentees", testware, getAbsentees);
-// app.post("/absentees", testware, postAbsentees);
 app.get("/absentees", isStaff, testware, getAbsentees);
 app.post("/absentees", isStudent, testware, postAbsentees);
 
 // Rating and review routes.
-// app.get("/feedback", testware, getFeedback);
-// app.post("/feedback", testware, postFeedback);
 app.get("/feedback", isStaff, testware, getFeedback);
 app.post("/feedback", isStudent, testware, postFeedback);
 
@@ -51,5 +49,12 @@ app.post("/feedback", isStudent, testware, postFeedback);
 app.post("/menu", isStaff, postMenu);
 app.get("/menu/staff", isStaff, getMenu);
 app.get("/menu/student", testware, getMenu);
+
+//Notifications routes
+app.post("/fcm",isStudent,postFCMToken);
+app.get("/notifications",sendNotification);
+
+//Staff notification routes
+app.post("/staffnotif",isStaff,postStaffNotification);
 
 exports.api = functions.https.onRequest(app);
