@@ -96,9 +96,10 @@
     color: rgba(255, 255, 255, 1);
     border: solid 2px rgba(255, 255, 255, 0.6);
     padding: 12px;
-    height: 150px;
+    height: 60px;
+    height: 10vh;
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1em;
     border-radius: 12px;
     margin-top: 14px;
     outline: 0;
@@ -128,7 +129,7 @@
 
 @media only screen and (max-width: 1300px) {
     .feedback__form > textarea {
-        height: 100px;
+        height: unset;
     }
 }
 
