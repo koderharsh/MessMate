@@ -17,7 +17,7 @@ const Home=()=>{
                 <Link to="/login/student"><button className="navright_button" >Student</button></Link>
             )}
             {isStaffAuthenticated()&&isStaffAuthenticated().stafftoken!==""?(
-              <Link to="/login/staff"><button className="navright_button" >Staff</button></Link>
+              <Link to="/dashboard/staff"><button className="navright_button" >Staff</button></Link>
             ):(
                 <Link to="/login/staff"><button className="navright_button" >Staff</button></Link>
             )}

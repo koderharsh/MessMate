@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from "react";
 import {login,authenticate} from "../../util/studentApi";
 import {useHistory} from 'react-router-dom'
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import HomeIcon from '@material-ui/icons/Home';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import IconButton from '@material-ui/core/IconButton';
 import redImage from '../student/Dashboard/raspberries.jpg'
 import greenImage from '../student/Dashboard/grapes.jpg'
@@ -66,15 +67,14 @@ useEffect(() => {
       <div className="dashboard__title__wrapper">
         <div>Messmate</div>
         <div>
-          STUDENT • 
+          STUDENT 
           <div>
           <IconButton aria-label="delete" onClick={()=>{
-              localStorage.removeItem("student");
-              history.push("/login/student");
-            }}>
-              <PowerSettingsNewIcon
-              className="logoutButton"
-          />
+              history.push("/");
+            }}><ArrowBackIcon/>
+            <HomeIcon
+            className="logoutButton"
+        />
           </IconButton>
           </div>
         </div>
@@ -88,6 +88,7 @@ useEffect(() => {
               <input placeholder="email ID" name="email" type="email" value={email} onChange={handleChange("email")}/>
               <input placeholder="password" name="password" type="password" value={password} onChange={handleChange("password")}/>
               <Button className="login_button" variant="contained" color="primary" endIcon={<SendIcon />} onClick={handleSubmit} >Login  </Button>
+          <p>Don't have an accout? <span className="redirect" onClick={() => history.push('../signup/student')}>Sign up</span></p>
           </form>
         </div>
       </div>

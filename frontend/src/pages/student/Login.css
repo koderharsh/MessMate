@@ -38,5 +38,10 @@ input:-internal-autofill-selected{
 
 .login_button{
     margin: 2rem !important;
-    background-color: rgba(var(--accent), 0.9) !important;
+}
+
+.redirect{
+    color: black ;
+    cursor: pointer;
+
 }
