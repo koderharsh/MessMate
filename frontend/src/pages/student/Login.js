@@ -8,6 +8,10 @@ import greenImage from '../student/Dashboard/grapes.jpg'
 import blueImage from '../student/Dashboard/blueberry2.jpg'
 import orangeImage from '../student/Dashboard/pasta.jpg'
 import yellowImage from '../student/Dashboard/mango1.jpg' 
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
+import './Login.css'
+
 const Login=()=>{
 
   const  history= useHistory();
@@ -75,13 +79,15 @@ useEffect(() => {
           </div>
         </div>
       </div>
-
       <div id='cardgrid'>
-        <div className='cardgrid__card' id='card1'>
-          <form>
-              <input name="email" type="email" value={email} onChange={handleChange("email")}/>
-              <input name="password" type="password" value={password} onChange={handleChange("password")}/>
-              <button type="submit" onClick={handleSubmit}>Login</button>
+        <div className='cardgrid__card' id='card4'>
+        <div className="Loginheader">
+            <h3 className="student-card-heading">Student Login</h3>
+        </div>
+          <form className="signin_form">
+              <input placeholder="email ID" name="email" type="email" value={email} onChange={handleChange("email")}/>
+              <input placeholder="password" name="password" type="password" value={password} onChange={handleChange("password")}/>
+              <Button className="login_button" variant="contained" color="primary" endIcon={<SendIcon />} onClick={handleSubmit} >Login  </Button>
           </form>
         </div>
       </div>
@@ -93,7 +99,6 @@ useEffect(() => {
     </div>
   )
 }
-
 
 function applyAccent() {
   let accentNum = localStorage.getItem('accentNum') || 0
