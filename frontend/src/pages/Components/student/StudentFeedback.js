@@ -9,7 +9,12 @@ import { isAuthenticated, postFeedback } from "../../../util/studentApi";
 
 function StudentFeedback() {
     const token = isAuthenticated() && isAuthenticated().studenttoken;
-    const [feedback, setFeedback] = useState({meal:"dinner", rating: 0})
+    let currentHour = new Date().getHours()
+    let currentMeal = 'dinner'
+    if(currentHour >= 8) currentMeal = 'breakfast'
+    if(currentHour >= 12 && currentHour <= 7) currentMeal = 'lunch'
+
+    const [feedback, setFeedback] = useState({meal: currentMeal, rating: 0, review: ''})
 
     return (
         <div>
@@ -33,7 +38,10 @@ function StudentFeedback() {
                 color="primary"
                 className="feedback__button"
                 endIcon={<SendIcon />}
-                onClick={() => {postFeedback(token, feedback)}}
+                onClick={() => {postFeedback(token, feedback); 
+                                setFeedback({meal:"dinner", rating: 0, review: ''}); 
+                                alert('Thanks for the review!')}
+                        }
                 >
                 Send
                 </Button>

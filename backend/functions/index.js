@@ -8,7 +8,6 @@ const app = express();
 
 const { staffSignup, staffLogin } = require("./helpers/staff");
 const { studentSignup, studentLogin } = require("./helpers/students");
-const { getResponses, postResponse } = require("./helpers/responses");
 const { getAbsentees, postAbsentees } = require("./helpers/absentNotif");
 const { postFeedback, getFeedback } = require("./helpers/feedback");
 const { postMenu, getMenu } = require("./helpers/menu");
@@ -27,28 +26,18 @@ app.post("/login/staff", staffLogin);
 app.post("/signup/student", studentSignup);
 app.post("/login/student", studentLogin);
 
-//Response routes
-// app.get("/responses", testware, getResponses);
-// app.post("/response", testware, postResponse);
-app.get("/responses", isStaff, getResponses);
-app.post("/response", isStudent, postResponse);
-
 // Prior absence notif routes.
-app.get("/absentees", isStaff, testware, getAbsentees);
-app.post("/absentees", isStudent, testware, postAbsentees);
+app.get("/absentees", isStaff, getAbsentees);
+app.post("/absentees", isStudent, postAbsentees);
 
 // Rating and review routes.
-app.get("/feedback", isStaff, testware, getFeedback);
-app.post("/feedback", isStudent, testware, postFeedback);
+app.get("/feedback", isStaff, getFeedback);
+app.post("/feedback", isStudent, postFeedback);
 
 //Menu Routes
-
-// app.post("/menu", testware, postMenu);
-// app.get("/menu/staff", testware, getMenu);
-// app.get("/menu/student", testware, getMenu);
 app.post("/menu", isStaff, postMenu);
 app.get("/menu/staff", isStaff, getMenu);
-app.get("/menu/student", testware, getMenu);
+app.get("/menu/student", isStudent, getMenu);
 
 //Notifications routes
 app.post("/fcm",isStudent,postFCMToken);

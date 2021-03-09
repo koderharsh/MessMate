@@ -19,7 +19,9 @@ function StudentAbsence() {
                     <option value="lunch">Skipping lunch today</option>
                     <option value="dinner">Skipping dinner today</option>
                 </select>
-                <IconButton component="span" variant="contained" onClick={() => {postAbsentee(token,{meal})}}>
+                <IconButton component="span" variant="contained" onClick={() => {postAbsentee(token,{meal});
+                                                                                setMeal("breakfast");
+                                                                                alert('Notification sent! Thank you.');}}>
                     <i className="lni lni-chevron-right"></i>
                 </IconButton>
             </div>
