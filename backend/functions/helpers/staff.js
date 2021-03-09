@@ -40,6 +40,8 @@ exports.staffSignup=(req,res)=>{
     console.error(err);
     if(err.code==="auth/email-already-in-use"){
       return res.status(400).json({errors:{general:"Email is already in use"}});
+    }else if(err.code==="auth/weak-password"){
+      return res.status(400).json({errors:{password:"Password must contain atleast 6 characters"}});
     }else
     return res.status(500).json({error:err.code});
   })

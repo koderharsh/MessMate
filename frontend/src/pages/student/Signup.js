@@ -19,12 +19,12 @@ const history=useHistory();
     email:"",
     password:"",
     name:"",
-    hostelId:"",
+    hostel:"",
     errors:{}
   });
 
   //destructured
-  const {email,password,name,hostelId,errors}=student;
+  const {email,password,name,hostel,errors}=student;
 
 //handle changes in form
   const handleChange=(name)=>(event)=>{
@@ -34,10 +34,12 @@ const history=useHistory();
 //handle submit of form
   const handleSubmit=(event)=>{
   event.preventDefault()
+  const hostelId = hostel.toUpperCase();
+  //console.log(hostelId)
   setStudent({...student,errors:false});
   signup({email,password,name,hostelId})
   .then(data=>{
-    console.log(data);
+    //console.log(data);
     if(data.errors){
       setStudent({...student,errors:data.errors})
     }else{
@@ -48,7 +50,7 @@ const history=useHistory();
         email:"",
         password:"",
         name:"",
-        hostelId:"",
+        hostel:"",
         errors:{}
     })
     });
@@ -97,7 +99,7 @@ useEffect(() => {
               {errors.password&& (<Typography variant="body2" className="customError">
                {errors.password}
              </Typography>)}
-            <input placeholder="HostelId" name="hostelId" type="text" value={hostelId} onChange={handleChange("hostelId")}/>
+            <input placeholder="HostelId" name="hostel" type="text" value={hostel} onChange={handleChange("hostel")}/>
               {errors.hostelId&& (<Typography variant="body2" className="customError">
                {errors.hostelId}
              </Typography>)}
