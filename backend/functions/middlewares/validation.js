@@ -11,6 +11,14 @@ const isValidEmail=(email)=>{
   else return false;
 };
 
+const isValidHostelId=(hostelId)=>{
+  if (hostelId.match(/^[A-Z]*$/)) {
+      return true;
+  } else {
+    return false;
+  }
+};
+
 exports.validateSignup=(data)=>{
   let errors={};
 if(isEmpty(data.email)){
@@ -23,20 +31,15 @@ if(isEmpty(data.password)){
   errors.password="Password must not be empty"
 }
 
-if(data.password!==data.confirmpassword){
-  errors.confirmpassword="Passwords must match"
-}
 
 if(isEmpty(data.name)){
   errors.name="Name must not be empty"
 }
 
-if(isEmpty(data.hostel)){
-  errors.college="Hostel name must not be empty"
-}
-
 if(isEmpty(data.hostelId)){
-  errors.college="HostelId must not be empty"
+  errors.hostelId="HostelId must not be empty"
+}else if(!isValidHostelId(data.hostelId)){
+  errors.hostelId="HostelId should be in uppercase"
 }
 
 return {

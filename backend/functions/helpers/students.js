@@ -7,14 +7,12 @@ exports.studentSignup=(req,res)=>{
   const newStudent={
     email:req.body.email,
     password:req.body.password,
-    confirmpassword:req.body.confirmpassword,
     name:req.body.name,
-    hostel:req.body.hostel,
     hostelId:req.body.hostelId
   };
 
   const { valid, errors } = validateSignup(newStudent);
-  if (!valid) return res.status(400).json(errors);
+  if (!valid) return res.status(400).json({errors});
 
 
   let studenttoken,studentId,hostelId;
@@ -28,7 +26,6 @@ exports.studentSignup=(req,res)=>{
     const studentCredentials={
       name:newStudent.name,
       email:newStudent.email,
-      hostel:newStudent.hostel,
       hostelId:newStudent.hostelId,
       createdAt:new Date().toISOString(),
       studentId
@@ -42,7 +39,7 @@ exports.studentSignup=(req,res)=>{
   .catch(err=>{
     console.error(err);
     if(err.code==="auth/email-already-in-use"){
-      return res.status(400).json({email:"Email is already in use"});
+      return res.status(400).json({errors:{general:"Email is already in use"}});
     }else
     return res.status(500).json({error:err.code});
   })
@@ -55,7 +52,7 @@ exports.studentLogin=(req,res)=>{
   };
 
   const { valid, errors } = validateLogin(student);
-  if (!valid) return res.status(400).json(errors);
+  if (!valid) return res.status(400).json({errors});
 
   let studenttoken,studentId,hostelId;
   firebase.auth().signInWithEmailAndPassword(student.email,student.password)
@@ -74,6 +71,6 @@ exports.studentLogin=(req,res)=>{
   })
   .catch(err=>{
     console.error(err);
-    return res.status(403).json({general:"Wrong credentials, please try again"});
+    return res.status(403).json({errors:{general:"Wrong credentials, please try again"}});
   })
 }

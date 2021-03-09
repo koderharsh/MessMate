@@ -25,41 +25,47 @@
     background-color: rgba(0,0,0,0.5);
     color: rgba(255, 255, 255, 0.9);
     border: solid 2px rgba(255, 255, 255, 0.6);
-    padding: 8px;
+    padding: 8px 8px 8px 18px;
     width: calc(100% - 80px);
     min-width: max-content;
     font-size: 18px;
     border-radius: 12px;
     outline: none;
-    text-align: center; 
+    text-align: left;
 }
 .signin_form > input {
     margin-top: 2rem;
     background-color: rgba(0,0,0,0.5);
     color: rgba(255, 255, 255, 0.9);
     border: solid 2px rgba(255, 255, 255, 0.6);
-    padding: 8px;
+    padding: 8px 8px 8px 18px;
     width: calc(100% - 80px);
     min-width: max-content;
     font-size: 18px;
     border-radius: 12px;
     outline: none;
-    text-align: center; 
+    text-align: left;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(255, 255, 255, 0.747);
     opacity: 1; /* Firefox */
-    align-items: center;
+    align-items: left;
 }
 input:-internal-autofill-selected{
     background-color: rgba(0,0,0,0.5) !important;
 }
 
+
 .login_button{
     margin: 2rem !important;
     background-color: rgba(var(--accent), 0.9)  !important;
 
+}
+.customError{
+  color:red;
+   font-size:0.9rem;
+   margin-top:5px
 }
 
 .redirect{
