@@ -25,6 +25,8 @@ import yellowImage from '../../student/Dashboard/mango1.jpg'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import IconButton from '@material-ui/core/IconButton';
 
+import Announcements from "../../Components/staff/Announcements";
+
 const Dashboard = () => {
   const history=useHistory();
   const token = isAuthenticated() && isAuthenticated().stafftoken;
@@ -171,6 +173,7 @@ const Dashboard = () => {
 
       <div id='cardgrid'>
          <div className='cardgrid__card' id='card1'>
+           <Announcements/>
           {/* <h2>TOTAL ABSENTEES : {absentees?.breakfast.count}</h2>
           <h3>
             Breakfast:

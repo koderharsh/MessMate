@@ -29,6 +29,7 @@ exports.postStaffNotification=(req,res)=>{
             body: description
           },
           topic: hostelId,
+
         };
 
         admin.messaging().send(message)
