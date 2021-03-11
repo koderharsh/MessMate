@@ -171,9 +171,10 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div id='cardgrid'>
+      <div id='cardgrid' class='staff__cardGrid'>
          <div className='cardgrid__card' id='card1'>
-           <Announcements/>
+           {/* <Announcements/> */}
+           
           {/* <h2>TOTAL ABSENTEES : {absentees?.breakfast.count}</h2>
           <h3>
             Breakfast:
@@ -189,6 +190,10 @@ const Dashboard = () => {
            {/* <EditModal /> */}
         </div>
         <div className='cardgrid__card' id='card3'>
+          <Announcements/>
+          {/* {feedback.breakfast.rating.ratingAverage}  */}
+        </div>
+        <div className='cardgrid__card' id='card5'>
           <h2>RATINGS AND REVIEWS</h2>
           {/* {feedback.breakfast.rating.ratingAverage}  */}
         </div>

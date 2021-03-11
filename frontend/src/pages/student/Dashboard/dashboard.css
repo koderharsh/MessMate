@@ -117,6 +117,34 @@ body {
   display:grid ;
 }
 
+
+.staff__cardGrid > #card3 {
+  height: 35%;
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 1;
+}
+
+.staff__cardGrid > #card5 {
+  height: calc(65% - 40px);
+  position: relative;
+  top: calc(35% + 20px);
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 1;
+}
+
+@media(max-width:900px) {
+  .staff__cardGrid > #card5 {
+    top: 0px;
+  }
+
+  .staff__cardGrid > #card3 {
+    height: max-content;
+  }
+  .staff__cardGrid > #card5 {
+    height: max-content;
+  }
+}
+
 .cardgrid__card {
   background-color: rgba(255, 255, 255, 0.246);
   background: linear-gradient(
