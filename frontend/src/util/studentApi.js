@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 //staff signup
 export const signup=(student)=>{
   return fetch(`/signup/student`,{
@@ -42,13 +43,20 @@ export const authenticate=(data,next)=>{
   }
 };
 
-export const isAuthenticated=()=>{
-  if(typeof window=="undefined"){
-    return false
+export const isAuthenticated = () => {
+  if (typeof window == "undefined") {
+    return false;
   }
-  if(localStorage.getItem("student")){
-    return JSON.parse(localStorage.getItem("student"));
+  if (localStorage.getItem("student")) {
+    const student=JSON.parse(localStorage.getItem("student"));
+    const decodedToken=jwtDecode(student.studenttoken);
+    if(decodedToken.exp*1000<Date.now()){
+    localStorage.removeItem("student");
+    window.location.href="/login/student";
   }else{
+    return JSON.parse(localStorage.getItem("student"));
+  }
+} else {
     return false;
   }
 };

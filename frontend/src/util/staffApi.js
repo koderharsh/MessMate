@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 //staff signup
 export const signup = (staff) => {
   return fetch(`/signup/staff`, {
@@ -47,8 +48,15 @@ export const isAuthenticated = () => {
     return false;
   }
   if (localStorage.getItem("staff")) {
+    const staff=JSON.parse(localStorage.getItem("staff"));
+    const decodedToken=jwtDecode(staff.stafftoken);
+    if(decodedToken.exp*1000<Date.now()){
+    localStorage.removeItem("staff");
+    window.location.href="/login/staff";
+  }else{
     return JSON.parse(localStorage.getItem("staff"));
-  } else {
+  }
+} else {
     return false;
   }
 };
