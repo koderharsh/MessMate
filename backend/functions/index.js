@@ -3,6 +3,7 @@ const firebase = require("firebase");
 const firebaseConfig = require("./firebaseConfig");
 firebase.initializeApp(firebaseConfig);
 
+require('dotenv').config()
 const express = require("express");
 const app = express();
 
@@ -42,6 +43,7 @@ app.get("/menu/student", isStudent, getMenu);
 //Notifications routes
 app.post("/fcm",isStudent,postFCMToken);
 app.get("/notifications",sendNotification);
+app.post("/notifications",sendNotification);
 
 //Staff notification routes
 app.post("/staffnotif",isStaff,postStaffNotification);

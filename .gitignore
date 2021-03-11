@@ -4,3 +4,5 @@ frontend/src/pages/staff/Dashboard/index.html
 frontend/src/firebase.js
 frontend/src/vapidKey.js
 frontend/public/firebase-messaging-sw.js
+ngrok.exe
+.http
