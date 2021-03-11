@@ -8,7 +8,7 @@ import './App.css';
 
 
 //import pages
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import StaffSignup from "./pages/staff/Signup";
 import StaffLogin from "./pages/staff/Login";
 import StudentSignup from "./pages/student/Signup";

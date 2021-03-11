@@ -118,17 +118,22 @@ function applyAccent() {
   document.querySelector(':root').style.setProperty('--accent', accentCodes[accentNum])
   document.getElementById('messImg-wrapper').style.backgroundImage = `url(${backgroundImages[accentNum]})`
   document.getElementById('messImg-wrapper').style.backgroundSize = "cover"
-
+  document.body.style.overflow = 'hidden'
   if(window.innerWidth <= 1300) {
+    document.body.style.overflow = 'auto'
     document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
     document.body.style.backgroundSize = "cover"
   }
   document.body.onresize = () => {
     if(window.innerWidth <= 1300) {
+      document.body.style.overflow = 'auto'
       document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
       document.body.style.backgroundSize = "cover"
     }
-    else document.body.style.backgroundImage = "none"
+    else {
+      document.body.style.backgroundImage = "none"
+      document.body.style.overflow = 'hidden'
+    }
   }
 }
 

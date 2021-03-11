@@ -120,7 +120,6 @@ useEffect(() => {
     </div>
   )
 }
-
 function applyAccent() {
   let accentNum = localStorage.getItem('accentNum') || 0
   let accentCodes = ['235, 50, 50', '0, 200, 33', '232, 232, 0', '0, 96, 206', '255, 61, 12']
@@ -128,18 +127,22 @@ function applyAccent() {
   document.querySelector(':root').style.setProperty('--accent', accentCodes[accentNum])
   document.getElementById('messImg-wrapper').style.backgroundImage = `url(${backgroundImages[accentNum]})`
   document.getElementById('messImg-wrapper').style.backgroundSize = "cover"
-
+  document.body.style.overflow = 'hidden'
   if(window.innerWidth <= 1300) {
+    document.body.style.overflow = 'auto'
     document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
     document.body.style.backgroundSize = "cover"
   }
   document.body.onresize = () => {
     if(window.innerWidth <= 1300) {
+      document.body.style.overflow = 'auto'
       document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
       document.body.style.backgroundSize = "cover"
     }
-    else document.body.style.backgroundImage = "none"
+    else {
+      document.body.style.backgroundImage = "none"
+      document.body.style.overflow = 'hidden'
+    }
   }
 }
-
 export default Signup;
