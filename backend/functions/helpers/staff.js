@@ -65,8 +65,12 @@ exports.staffLogin=(req,res)=>{
   .then(token=>{
     stafftoken=token;
     db.collection(`staff`).doc(`${staffId}`).get().then(doc=>{
+      if(!doc.data())
+      return res.json({errors:{general:"Not a staff memeber"}});
+      else{
         hostelId=doc.data().hostelId;
         return res.json({stafftoken,staffId,hostelId});
+      }
       })
   })
   .catch(err=>{

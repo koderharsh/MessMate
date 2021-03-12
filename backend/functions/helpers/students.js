@@ -43,7 +43,7 @@ exports.studentSignup=(req,res)=>{
     }else if(err.code==="auth/weak-password"){
       return res.status(400).json({errors:{password:"Password must have atleast 6 characters"}});
     }else
-    return res.status(500).json({error:err.code});
+    return res.status(500).json({error:{general:"Unauthorised"}});
   })
 }
 
@@ -66,8 +66,12 @@ exports.studentLogin=(req,res)=>{
   .then(token=>{
     studenttoken=token;
     db.collection(`student`).doc(`${studentId}`).get().then(doc=>{
-        hostelId=doc.data().hostelId;
-        return res.json({studenttoken,studentId,hostelId});
+       if(!doc.data())
+       return res.json({errors:{general:"Not a student"}});
+       else{
+         hostelId=doc.data().hostelId;
+         return res.json({studenttoken,studentId,hostelId});
+       }
       })
 
   })
