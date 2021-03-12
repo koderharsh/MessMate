@@ -8,7 +8,7 @@ const express = require("express");
 const app = express();
 
 const { staffSignup, staffLogin } = require("./helpers/staff");
-const { studentSignup, studentLogin } = require("./helpers/students");
+const { studentSignup, studentLogin,getStudents } = require("./helpers/students");
 const { getAbsentees, postAbsentees } = require("./helpers/absentNotif");
 const { postFeedback, getFeedback } = require("./helpers/feedback");
 const { postMenu, getMenu } = require("./helpers/menu");
@@ -26,6 +26,7 @@ app.post("/login/staff", staffLogin);
 //Student Routes
 app.post("/signup/student", studentSignup);
 app.post("/login/student", studentLogin);
+
 
 // Prior absence notif routes.
 app.get("/absentees", isStaff, getAbsentees);

@@ -24,6 +24,7 @@ import orangeImage from '../../student/Dashboard/pasta.jpg'
 import yellowImage from '../../student/Dashboard/mango1.jpg'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import IconButton from '@material-ui/core/IconButton';
+import { PieChart } from 'react-minimal-pie-chart';
 
 import Announcements from "../../Components/staff/Announcements";
 
@@ -173,8 +174,15 @@ const Dashboard = () => {
 
       <div id='cardgrid' class='staff__cardGrid'>
          <div className='cardgrid__card' id='card1'>
+           <PieChart
+  data={[
+    { title: 'One', value: 10, color: '#E38627' },
+    { title: 'Two', value: 15, color: '#C13C37' },
+    { title: 'Three', value: 20, color: '#6A2135' },
+  ]}
+/>;
            {/* <Announcements/> */}
-           
+
           {/* <h2>TOTAL ABSENTEES : {absentees?.breakfast.count}</h2>
           <h3>
             Breakfast:
