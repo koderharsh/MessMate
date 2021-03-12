@@ -75,6 +75,7 @@ box-sizing: border-box;
     min-height: 100vh;
     padding-top: 25vh;
     grid-template-columns: 40vw 1fr 71.2vh;
+    grid-template-columns: max-content 1fr 71.2vh;
     grid-template-rows: max-content;
 }
 
@@ -145,6 +146,7 @@ box-sizing: border-box;
 #home__sitedesc {
     color: rgba(255, 255, 255, 0.9);
     width: 40vw;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     font-size: 1.2em;
     line-height: 125%;
     font-family: 'Roboto';
@@ -164,6 +166,10 @@ box-sizing: border-box;
 @media only screen and (max-width: 1550px) {
     #home__sitename {
         font-size: 120px;
+    }
+
+    #home__sitename img {
+        width: 90px;
     }
 }
 
@@ -497,5 +503,69 @@ box-sizing: border-box;
     }
     #home__footer > div {
         display: block;
+    }
+}
+
+#home__sitename > div {
+    display: inline-block;
+    margin-right: 30px;
+    width: 128px;
+    position: relative;
+    height: 128px;
+    top: 10px;
+    left: -10px;
+    transform: scale(1.2);
+    overflow: hidden;
+    border-radius: 50%;
+    border: solid 1px rgba(255, 255, 255, 0.4);
+}
+
+#home__sitename img {
+    /* border: solid 1px rgba(255, 255, 255, 0.9); */
+    /* border-radius: 50%; */
+    display: inline-block;
+    position: relative;
+    transform: scale(1.1) translateY(-8px) translateX(-2px);
+    padding: 20%;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    filter: brightness(10);
+    /* top: 20px; */
+}
+
+@media only screen and (max-width: 1550px) {
+
+    #home__sitename > div {
+        width: 120px;
+        height: 120px;
+    }
+
+    #home__sitename img {
+        top: 10px;
+    }
+}
+@media only screen and (max-width: 700px) {
+
+    #home__sitename > div {
+        width: 80px;
+        height: 80px;
+        /* top: 10px; */
+    }
+
+    #home__sitename {
+        font-size: 80px;
+    }
+}
+@media only screen and (max-width: 500px) {
+
+    #home__sitename > div {
+        width: 60px;
+        height: 60px;
+        /* top: 10px; */
+    }
+
+    #home__sitename {
+        font-size: 60px;
     }
 }

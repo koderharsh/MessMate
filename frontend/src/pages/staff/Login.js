@@ -12,6 +12,13 @@ import yellowImage from '../student/Dashboard/mango1.jpg'
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import Typography from '@material-ui/core/Typography';
+
+import redLogo from '../../logos/redLogo.png'
+import greenLogo from '../../logos/greenLogo.png'
+import blueLogo from '../../logos/blueLogo.png'
+import orangeLogo from '../../logos/orangeLogo.png'
+import yellowLogo from '../../logos/yellowLogo.png'
+
 const Login=()=>{
 
   const history=useHistory();
@@ -64,7 +71,12 @@ useEffect(() => {
     <div>
       <div id='dashboard-wrapper'>
       <div className="dashboard__title__wrapper">
-        <div>Messmate</div>
+        <div> 
+          <div id="dashboard__logo__wrapper">
+            <img src='' />
+          </div> 
+          Messmate
+        </div>
         <div>
           STAFF
           <div>
@@ -113,6 +125,8 @@ function applyAccent() {
   let accentNum = localStorage.getItem('accentNum') || 0
   let accentCodes = ['235, 50, 50', '0, 200, 33', '232, 232, 0', '0, 96, 206', '255, 61, 12']
   let backgroundImages = [redImage, greenImage, yellowImage, blueImage, orangeImage]
+  let logoImages = [redLogo, greenLogo, yellowLogo, blueLogo, orangeLogo]
+  document.querySelector('#dashboard__logo__wrapper > img').src = logoImages[accentNum]
   document.querySelector(':root').style.setProperty('--accent', accentCodes[accentNum])
   document.getElementById('messImg-wrapper').style.backgroundImage = `url(${backgroundImages[accentNum]})`
   document.getElementById('messImg-wrapper').style.backgroundSize = "cover"
@@ -133,5 +147,13 @@ function applyAccent() {
       document.body.style.overflow = 'hidden'
     }
   }
+  
+  if(accentNum == 4)
+  document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(1) brightness(1) hue-rotate(10deg) opacity(0.8)'
+  else if(accentNum == 3) 
+  document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(0.5) brightness(0.8) hue-rotate(40deg) opacity(0.8)'
+  else 
+  document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(1) brightness(1) opacity(0.8)'
+  if(window.innerWidth <= 1300) document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'brightness(15) saturate(0) contrast(10)'
 }
 export default Login;

@@ -14,6 +14,8 @@ import absenceIcon from './absenceIcon.png'
 import notificationIcon from './notificationIcon.png'
 import mobSS from './mobSS.jpg'
 
+import logoImage from './../../logos/redLogo.png'
+
 
 function Home() {
 document.body.style.overflow = 'auto'
@@ -31,7 +33,12 @@ document.body.style.overflow = 'auto'
 
             <div id="home__sectionOne">
                 <div id="home__sectionOne__left">
-                    <div id="home__sitename">Messmate</div>
+                <div id="home__sitename">
+                    <div>
+                        <img src={logoImage} />
+                    </div>
+                    Messmate
+                </div>
                     <div id="home__sitedesc">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                     <a href="#home__sectionTwo">
