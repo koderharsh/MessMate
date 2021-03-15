@@ -56,14 +56,9 @@ exports.sendNotification=(req,res)=>{
               title: 'MessMate',
               body: `${decodeURI(req.query.notifcontent) || 'Please send your response!!'}`,
             },
-            webpush: {
-    headers: {
-      image: 'https://t4.ftcdn.net/jpg/03/75/38/73/360_F_375387396_wSJM4Zm0kIRoG7Ej8rmkXot9gN69H4u4.jpg'
-    }
-  },
             topic: 'Students',
           };
-          
+
           admin.messaging().send(message)
             .then((response) => {
               // Response is a message ID string.
@@ -86,7 +81,7 @@ async function scheduleNextNotification() {
   // console.log(timestamp)
   try {
     let postbacksRes = await axios.post(
-      'https://api.postbacks.io/v1/requestPostback',   
+      'https://api.postbacks.io/v1/requestPostback',
       {
         "url": process.env.PUBLICENDPOINT,
         "send_at": timestamp,
