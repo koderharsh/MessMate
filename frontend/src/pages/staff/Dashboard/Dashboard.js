@@ -184,7 +184,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div id='cardgrid' class='staff__cardGrid'>
+      <div id='cardgrid' className='staff__cardGrid'>
          <div className='cardgrid__card' id='card1'>
           <Absentees/>
            {/* <Announcements/> */}

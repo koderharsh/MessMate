@@ -45,7 +45,7 @@ const Login=()=>{
   login({email,password})
   .then(data=>{
     //console.log(data);
-    if(data.errors){
+    if(data && data.errors){
       setStaff({...staff,errors:data.errors})
     }else{
       //on success authenticate by adding token to localstorage

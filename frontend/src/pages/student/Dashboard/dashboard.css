@@ -388,3 +388,22 @@ body {
   }
 
 }
+
+@keyframes chartIn {
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+#absentee__chart-wrapper {
+  margin-right: 0;
+  opacity: 0;
+  transform: scale(0.9) rotate(-20deg);
+  animation: chartIn 0.3s 1s 1 forwards;
+  /* border: solid; */
+  /* height: 85%; */
+  height: max-content;
+  width: 85%;
+  margin-left: 7.5%;
+}
