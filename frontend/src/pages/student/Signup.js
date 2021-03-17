@@ -47,7 +47,7 @@ const history=useHistory();
   signup({email,password,name,hostelId})
   .then(data=>{
     //console.log(data);
-    if(data.errors){
+    if(data && data.errors){
       setStudent({...student,errors:data.errors})
     }else{
       //on success authenticate by adding token to localstorage

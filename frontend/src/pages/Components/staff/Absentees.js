@@ -29,7 +29,7 @@ const Absentees=()=>{
     }
     getAbsentees(token)
     .then((data)=>{
-      if(data.error)
+      if(data && data.error)
       setError(data.error)
       else{
         //console.log(data)
@@ -57,6 +57,7 @@ const Absentees=()=>{
             <div className="absence__tiptext">
                   Number of absentees: {val}
               </div>
+              <div id="absentee__chart-wrapper">
           <PieChart
   data={[
    { title: 'Absentees', value:val, color: 'rgba( 32, 31, 31, 0.50 )' },
@@ -81,6 +82,7 @@ const Absentees=()=>{
        }}
 
   />
+  </div>
 </div>
         )}
 
