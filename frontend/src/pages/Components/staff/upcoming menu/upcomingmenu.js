@@ -1,45 +1,75 @@
 import React, { useState, useEffect } from "react";
-import { isAuthenticated, postMenu, getMenu } from "../../../../util/staffApi";
+import {
+  isAuthenticated,
+  postMenu,
+  getMenu,
+} from "./../../../../util/staffApi";
 import "./upcomingmenu.css";
 
 const token = isAuthenticated() && isAuthenticated().stafftoken;
 
 const UpcomingMeal = () => {
-  const rendered = () => {
-    if (meal.err) return <p>Menu not added yet</p>;
-    else {
-      return (
-        <div>
-          <p>FoodItem: {meal.foodItem}</p>
-          <p>Desert: {meal.desert}</p>
-        </div>
-      );
-    }
-  };
-
-  const [meal, setMeal] = useState({
+  let [meal, setMeal] = useState({
     day: "",
     mealT: "",
     foodItem: "",
     desert: "",
     err: "",
   });
+  const rendered = () => {
+    let Maincourse = meal.foodItem;
+    let desert = meal.desert;
+    return (
+      <div>
+        <p>
+          <u>Main Course</u>
+        </p>
+        <p>{Maincourse}</p>
+        <p>
+          <u>Desert</u>
+        </p>
+        <p>{desert}</p>
+      </div>
+    );
+  };
 
-  const getMenuList = () => {
-    getMenu(token).then((data, err) => {
-      if (err) {
+  const getMenuList = async () => {
+    await getMenu(token)
+      .then((data) => {
+        if (!data.error) {
+          console.log(data, "harsh");
+          setMeal({
+            ...meal,
+            day: data.Day.toUpperCase(),
+            mealT: data.timeMeal.toUpperCase(),
+            foodItem: data.durMeal.foodItem
+              ? data.durMeal.foodItem.toUpperCase()
+              : "Not Entered Yet",
+            desert: data.durMeal.desert
+              ? data.durMeal.desert.toUpperCase()
+              : "Not Entered Yet",
+          });
+        } else {
+          const food = "Not Entered Yet";
+
+          setMeal({
+            day: data.Day.toUpperCase(),
+            mealT: data.timeMeal.toUpperCase(),
+            err: data.error,
+            foodItem: food,
+            desert: food,
+          });
+        }
+      })
+      .catch((e) => {
         setMeal({
-          err: "Error",
+          day: `Can't Connect`,
+          mealT: `Can't Connect`,
+          err: e,
+          foodItem: `Can't Connect`,
+          desert: `Can't Connect`,
         });
-      } else {
-        setMeal({
-          day: data.Day.toUpperCase(),
-          mealT: data.timeMeal.toUpperCase(),
-          foodItem: data.durMeal.foodItem.toUpperCase(),
-          desert: data.durMeal.desert.toUpperCase(),
-        });
-      }
-    });
+      });
   };
 
   useEffect(() => {
@@ -51,7 +81,7 @@ const UpcomingMeal = () => {
       <div className='box'>
         <p>{meal.day}</p>
         <p>{meal.mealT}</p>
-        {rendered()}
+        <div className='left'>{rendered()}</div>
       </div>
     </div>
   );
