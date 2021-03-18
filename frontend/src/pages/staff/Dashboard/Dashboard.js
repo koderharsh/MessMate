@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import UpcomingMeal from "../../Components/staff/upcoming menu/upcomingmenu";
 import EditModal from "../../Components/staff/editMenuModal/editmodal";
 import Review from "./Review";
-import "./dashboard.css";
+// import "./dashboard.css";
 
 import "../../student/Dashboard/dashboard.css";
 import redImage from "../../student/Dashboard/raspberries.jpg";
@@ -131,8 +131,9 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    applyAccent();
-    console.log("yaya dfsdfjkjs");
+    applyAccent()
+    window.scrollTo(0,0)
+
     getAbsenteeList();
     getStudentFeedback();
   }, []);

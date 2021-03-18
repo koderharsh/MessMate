@@ -175,6 +175,7 @@ body {
     #card4{
       margin:10px;
     }
+
 }
 @media only screen and (max-width: 1500px) {
   #cardgrid {
@@ -209,7 +210,9 @@ body {
     overflow: visible;
     padding-bottom: 30px;
   }
-  
+  .card2 {
+    height: 400px;
+  }
   #messImg-wrapper {
     position: sticky !important;
     top:0vh;

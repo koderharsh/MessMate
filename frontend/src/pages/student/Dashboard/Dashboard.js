@@ -30,6 +30,8 @@ const idtoken=isAuthenticated()&&isAuthenticated().studenttoken;
 
 useEffect(()=>{
   applyAccent()
+  window.scrollTo(0,0)
+
   const msg=firebase.messaging();
   msg.requestPermission().then(()=>{
     return msg.getToken({ vapidKey});

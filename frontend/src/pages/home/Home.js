@@ -52,7 +52,7 @@ document.body.style.overflow = 'auto'
                         {/* <Link to="/dashboard/student"> <Button className="home__signin__button">As staff</Button> </Link> */}
                             <span>
                                 {isStudentAuthenticated() && isStudentAuthenticated().studenttoken !== "" ? (
-                                    <Link to="/dashboard/student"><Button className="home__signin__button">As student</Button></Link>
+                                    <Link to="/dashboard/student"><Button className="home__signin__button" onclick={() => {window.scrollTo(0,0)}}>As student</Button></Link>
                                 ) : (
                                     <Link to="/login/student"><Button className="home__signin__button">As student</Button></Link>
                                 )}
@@ -64,6 +64,7 @@ document.body.style.overflow = 'auto'
                                     <Link to="/login/staff"><Button className="home__signin__button">As staff</Button></Link>
                                 )}
                             </span>
+                            {/* <Button className="home__signin__button" onclick={() => {window.scrollY(0)}}>As student</Button> */}
                         </div>
                     </div>
                 </div>
@@ -118,8 +119,8 @@ document.body.style.overflow = 'auto'
 
             <div id="home__footer">
                 <div>Developed by <strong>Team Coding Poltergeists</strong></div>
-                <div><a href="">DSC Solution Challange '21</a></div>
-                <div><a href="">View on Github</a></div>
+                <div><a href="https://developers.google.com/community/dsc-solution-challenge" target="blank">DSC Solution Challange '21</a></div>
+                <div><a href="https://github.com/koderharsh/MessMate" target="blank">View on Github</a></div>
             </div>
         </div>
     )

@@ -60,12 +60,12 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    applyAccent();
-    console.log("yaya dfsdfjkjs");
-  }, []);
-  //ugly demo
-  return (
+useEffect(() => {
+  applyAccent()
+  window.scrollTo(0,0)
+}, []);
+//ugly demo
+  return(
     <div>
       <div id='dashboard-wrapper'>
         <div className='dashboard__title__wrapper'>

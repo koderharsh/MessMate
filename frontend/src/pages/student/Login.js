@@ -59,10 +59,10 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    applyAccent();
-    console.log("yaya dfsdfjkjs");
-  }, []);
+useEffect(() => {
+  applyAccent()
+  window.scrollTo(0,0)
+}, []);
 
   //ugly demo
   return (
