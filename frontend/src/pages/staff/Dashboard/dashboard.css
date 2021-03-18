@@ -73,6 +73,7 @@ body {
   /* border: solid; */
   /* border-color: green; */
   position: absolute;
+  z-index: 10;
 
   grid-template-rows: 50% 50%;
   grid-template-columns: 50% 50%;
@@ -114,7 +115,6 @@ body {
   color: rgba(41, 41, 41, 0.678);
   font-family: cursive;
   text-align: center;
-  z-index: 1;
 }
 
 .cardgrid__card > h2 {
@@ -234,9 +234,5 @@ body {
 
   #cardgrid {
     top: 20px;
-  }
-
-  .card2 {
-    height: 400px;
   }
 }

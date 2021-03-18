@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
-.staffbox2 {
+.box2 {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -11,137 +11,10 @@
   font-weight: 800;
 }
 .button-modal {
+  background: url("./button.jpg");
   height: 60%;
-  width: 35%;
+  width: 25%;
+  border-radius: 10%;
   font-size: 1.2rem;
   cursor: pointer;
-  color: rgb(49, 49, 49);
-  background-color: rgba(0, 0, 0, 0.246);
-  background: linear-gradient(
-    124deg,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0.17) 50%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
-  border-radius: 10px;
-  backdrop-filter: blur(20px);
-  outline: none;
-}
-
-.button-modal:hover {
-  background-color: rgb(245, 245, 244, 0.6);
-}
-
-.modal {
-  background-color: rgba(0, 0, 0, 0.246);
-  background: linear-gradient(
-    124deg,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0.17) 50%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
-  border-radius: 40px;
-  backdrop-filter: blur(20px);
-  height: 55%;
-  width: 65%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  outline: none;
-  display: flex;
-  float: right;
-  padding-top: 2%;
-  padding-bottom: 6%;
-}
-
-.modal-button {
-  position: absolute;
-  left: 50%;
-  bottom: 5%;
-  transform: translateX(-50%);
-  height: 10%;
-  width: 10%;
-  background-color: rgba(59, 59, 59, 0.246);
-  background: linear-gradient(
-    124deg,
-    rgba(226, 221, 221, 0.08) 0%,
-    rgba(167, 165, 165, 0.17) 50%,
-    rgba(99, 99, 99, 0.25) 100%
-  );
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  outline: none;
-  cursor: pointer;
-  color: aliceblue;
-  font-size: 1.1rem;
-  border: 1px solid rgb(241, 106, 129);
-  background-color: rgb(241, 106, 129);
-  transition: 0.1s;
-}
-
-.modal-button:hover {
-  background-color: transparent;
-}
-
-.floatr {
-  float: right;
-  margin-right: 1.8rem;
-  left: 2%;
-}
-
-.box_grid {
-  position: absolute;
-  top: 25%;
-  right: 3%;
-}
-
-.style-button {
-  position: relative;
-  top: 2%;
-}
-
-@media only screen and (max-width: 550px) {
-  .staffbox2 {
-    min-height: 100%;
-  }
-  .button-modal {
-    width: 30%;
-    position: absolute;
-    bottom: 4%;
-    height: 10%;
-  }
-  .modal {
-    height: 100%;
-    min-width: 100%;
-    overflow: scroll;
-    position: relative;
-  }
-  .modal-button {
-    width: 35%;
-    position: sticky;
-    top: 90%;
-    background-color: rgba(59, 59, 59, 0.246);
-    background: linear-gradient(
-      124deg,
-      rgba(226, 221, 221, 0.08) 0%,
-      rgba(167, 165, 165, 0.17) 50%,
-      rgba(99, 99, 99, 0.25) 100%
-    );
-    backdrop-filter: blur(20px);
-    font-size: 1.5rem;
-    height: 7%;
-    border: 1px solid rgb(165, 164, 164);
-  }
-
-  .box_grid {
-    width: 99%;
-    top: 15%;
-    left: 0.2%;
-  }
-
-  .floatr {
-    width: 95%;
-    margin-right: 2%;
-  }
 }

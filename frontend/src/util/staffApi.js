@@ -44,20 +44,19 @@ export const authenticate = (data, next) => {
 };
 
 export const isAuthenticated = () => {
-  const storedToken = localStorage.getItem("staff");
   if (typeof window == "undefined") {
     return false;
   }
-  if (storedToken) {
-    const staff = JSON.parse(storedToken);
-    const decodedToken = jwtDecode(staff.stafftoken);
-    if (decodedToken.exp * 1000 < Date.now()) {
-      localStorage.removeItem("staff");
-      window.location.href = "/login/staff";
-    } else {
-      return JSON.parse(storedToken);
-    }
-  } else {
+  if (localStorage.getItem("staff")) {
+    const staff=JSON.parse(localStorage.getItem("staff"));
+    const decodedToken=jwtDecode(staff.stafftoken);
+    if(decodedToken.exp*1000<Date.now()){
+    localStorage.removeItem("staff");
+    window.location.href="/login/staff";
+  }else{
+    return JSON.parse(localStorage.getItem("staff"));
+  }
+} else {
     return false;
   }
 };
@@ -96,8 +95,8 @@ export const getFeedback = (token) => {
     });
 };
 
-export const postMenu = async (token, menu) => {
-  return await fetch(`/menu`, {
+export const postMenu = (token, menu) => {
+  return fetch(`/menu`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -107,7 +106,7 @@ export const postMenu = async (token, menu) => {
     body: JSON.stringify(menu),
   })
     .then((response) => {
-      return console.log("hello", response.json());
+      return response.json();
     })
     .catch((err) => {
       console.log(err);

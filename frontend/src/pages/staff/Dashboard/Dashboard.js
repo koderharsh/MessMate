@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
 import {
   isAuthenticated,
   getAbsentees,
@@ -7,23 +6,24 @@ import {
   postMenu,
   getMenu,
 } from "../../../util/staffApi";
-import { postStaffNotification } from "../../../util/notifApi";
-import { useHistory } from "react-router-dom";
+import {
+postStaffNotification
+} from "../../../util/notifApi";
+import {useHistory} from "react-router-dom";
 // import "./dashboard.css";
 // import "./dashboard.css";
 import UpcomingMeal from "../../Components/staff/upcoming menu/upcomingmenu";
 import EditModal from "../../Components/staff/editMenuModal/editmodal";
 import Review from "./Review";
-import "./dashboard.css";
 
-import "../../student/Dashboard/dashboard.css";
-import redImage from "../../student/Dashboard/raspberries.jpg";
-import greenImage from "../../student/Dashboard/grapes.jpg";
-import blueImage from "../../student/Dashboard/blueberry1.jpg";
-import orangeImage from "../../student/Dashboard/pasta.jpg";
-import yellowImage from "../../student/Dashboard/mango1.jpg";
-import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
-import IconButton from "@material-ui/core/IconButton";
+import "../../student/Dashboard/dashboard.css"
+import redImage from '../../student/Dashboard/raspberries.jpg'
+import greenImage from '../../student/Dashboard/grapes.jpg'
+import blueImage from '../../student/Dashboard/blueberry1.jpg'
+import orangeImage from '../../student/Dashboard/pasta.jpg'
+import yellowImage from '../../student/Dashboard/mango1.jpg'
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import IconButton from '@material-ui/core/IconButton';
 
 import redLogo from '../../../logos/redLogo.png'
 import greenLogo from '../../../logos/greenLogo.png'
@@ -32,14 +32,10 @@ import orangeLogo from '../../../logos/orangeLogo.png'
 import yellowLogo from '../../../logos/yellowLogo.png'
 
 import Announcements from "../../Components/staff/Announcements";
-<<<<<<< Updated upstream
 import Absentees from "../../Components/staff/Absentees";
-=======
-import GetReview from "./../../Components/staff/getReview/getReview";
->>>>>>> Stashed changes
 
 const Dashboard = () => {
-  const history = useHistory();
+  const history=useHistory();
   const token = isAuthenticated() && isAuthenticated().stafftoken;
   const hostelId = isAuthenticated() && isAuthenticated().hostelId;
   const [absentees, setAbsentees] = useState({
@@ -61,8 +57,9 @@ const Dashboard = () => {
     desert: "",
   });
 
-  //to post body of notification by staff
-  const [description, setDescription] = useState("");
+
+//to post body of notification by staff
+  const [description,setDescription]=useState("");
 
   const { day, meal, foodItem, desert } = menu;
 
@@ -118,23 +115,23 @@ const Dashboard = () => {
     });
   };
 
-  const handleNotifChange = (event) => {
-    setDescription(event.target.value);
-  };
+  const handleNotifChange=(event)=>{
+    setDescription(event.target.value)
+  }
 
-  const postNotif = (event) => {
+  const postNotif=(event)=>{
     event.preventDefault();
-    postStaffNotification(token, { description }).then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        console.log("Notifications send successfully!!");
+    postStaffNotification(token,{description}).then((data)=>{
+      if(data.error){
+        console.log(data.error)
+      }else{
+        console.log("Notifications send successfully!!")
       }
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    applyAccent();
+    applyAccent()
     console.log("yaya dfsdfjkjs");
     getAbsenteeList();
     getStudentFeedback();
@@ -164,7 +161,6 @@ const Dashboard = () => {
 
   return (
     <div id='dashboard-wrapper'>
-<<<<<<< Updated upstream
       <div className="dashboard__title__wrapper">
         <div> 
           <div id="dashboard__logo__wrapper">
@@ -173,28 +169,22 @@ const Dashboard = () => {
           Messmate
         </div>
 
-=======
-      <div className='dashboard__title__wrapper'>
-        <div>Messmate</div>
->>>>>>> Stashed changes
         <div>
           STAFF • {hostelId}
           <div>
-            <IconButton
-              aria-label='delete'
-              onClick={() => {
-                localStorage.removeItem("staff");
-                history.push("/login/staff");
-              }}
-            >
-              <PowerSettingsNewIcon className='logoutButton' />
-            </IconButton>
+          <IconButton aria-label="delete" onClick={()=>{
+              localStorage.removeItem("staff");
+              history.push("/login/staff");
+            }}>
+              <PowerSettingsNewIcon
+              className="logoutButton"
+          />
+          </IconButton>
           </div>
         </div>
       </div>
 
       <div id='cardgrid' className='staff__cardGrid'>
-<<<<<<< Updated upstream
          <div className='cardgrid__card' id='card1'>
           <Absentees/>
            {/* <Announcements/> */}
@@ -212,20 +202,14 @@ const Dashboard = () => {
         <div className='cardgrid__card' id='card2'>
           {/* <UpcomingMeal />  */}
            {/* <EditModal /> */}
-=======
-        <div className='cardgrid__card' id='card1'></div>
-        <div className='cardgrid__card card2' id='card2'>
-          {<UpcomingMeal />}
-          {<EditModal />}
->>>>>>> Stashed changes
         </div>
         <div className='cardgrid__card' id='card3'>
-          <Announcements />
+          <Announcements/>
           {/* {feedback.breakfast.rating.ratingAverage}  */}
         </div>
         <div className='cardgrid__card' id='card5'>
           <h2>RATINGS AND REVIEWS</h2>
-          <GetReview />
+          {/* {feedback.breakfast.rating.ratingAverage}  */}
         </div>
       </div>
 
@@ -237,7 +221,6 @@ const Dashboard = () => {
 };
 
 function applyAccent() {
-<<<<<<< Updated upstream
   let accentNum = localStorage.getItem('accentNum') || 0
   let accentCodes = ['235, 50, 50', '0, 200, 33', '232, 232, 0', '0, 96, 206', '255, 61, 12']
   let backgroundImages = [redImage, greenImage, yellowImage, blueImage, orangeImage]
@@ -251,46 +234,13 @@ function applyAccent() {
     document.body.style.overflow = 'auto'
     document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
     document.body.style.backgroundSize = "cover"
-=======
-  let accentNum = localStorage.getItem("accentNum") || 0;
-  let accentCodes = [
-    "235, 50, 50",
-    "0, 200, 33",
-    "232, 232, 0",
-    "0, 96, 206",
-    "255, 61, 12",
-  ];
-  let backgroundImages = [
-    redImage,
-    greenImage,
-    yellowImage,
-    blueImage,
-    orangeImage,
-  ];
-  document
-    .querySelector(":root")
-    .style.setProperty("--accent", accentCodes[accentNum]);
-  document.getElementById(
-    "messImg-wrapper"
-  ).style.backgroundImage = `url(${backgroundImages[accentNum]})`;
-  document.getElementById("messImg-wrapper").style.backgroundSize = "cover";
-  document.body.style.overflow = "hidden";
-  if (window.innerWidth <= 1300) {
-    document.body.style.overflow = "auto";
-    document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`;
-    document.body.style.backgroundSize = "cover";
->>>>>>> Stashed changes
   }
   document.body.onresize = () => {
-    if (window.innerWidth <= 1300) {
-      document.body.style.overflow = "auto";
-      document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`;
-      document.body.style.backgroundSize = "cover";
-    } else {
-      document.body.style.backgroundImage = "none";
-      document.body.style.overflow = "hidden";
+    if(window.innerWidth <= 1300) {
+      document.body.style.overflow = 'auto'
+      document.body.style.backgroundImage = `url(${backgroundImages[accentNum]})`
+      document.body.style.backgroundSize = "cover"
     }
-<<<<<<< Updated upstream
     else {
       document.body.style.backgroundImage = "none"
       document.body.style.overflow = 'hidden'
@@ -305,9 +255,6 @@ function applyAccent() {
   else 
   document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(1) brightness(1) opacity(0.8)'
   if(window.innerWidth <= 1300) document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'brightness(15) saturate(0) contrast(10)'
-=======
-  };
->>>>>>> Stashed changes
 }
 
 export default Dashboard;
