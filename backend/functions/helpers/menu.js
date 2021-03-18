@@ -11,100 +11,100 @@ const postMenu = async (req, res) => {
           updatedOn: {},
           sunday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
           monday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
           tuesday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
           wednesday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
           thursday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
           friday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
           saturday: {
             breakfast: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             lunch: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
             dinner: {
-              foodItem: {},
-              desert: {},
+              foodItem: "",
+              desert: "",
             },
           },
         });
@@ -113,9 +113,11 @@ const postMenu = async (req, res) => {
     doc = await db.collection("menu").doc(`${req.user.hostelId}`).get();
 
     const day = req.body.day;
+
     const meal = req.body.meal;
     const foodItem = req.body.foodItem;
     const desert = req.body.desert;
+    console.log(day, meal, foodItem, desert);
 
     const currentDate = new Date().toDateString();
 
@@ -127,44 +129,49 @@ const postMenu = async (req, res) => {
     try {
       await doc.ref.update(updateMeal);
 
-      res.status(200).send("Menu Uploaded");
+      res.status(200).json("Menu Uploaded");
     } catch (e) {
-      res.status(400).send("Something went Wrong");
+      res.status(400).json("Something went Wrong");
     }
   } catch (e) {
-    res.status(500);
+    res.status(500).json({ Error: e, Day, timeMeal });
   }
 };
 
 const getMenu = async (req, res) => {
+  let day = new Date().getDay();
+  const datear = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ];
+  const Day = datear[day];
+  let durTime = new Date().getHours();
+  console.log(durTime);
+  let timeMeal = "";
+  if (durTime >= 10 && durTime <= 15) timeMeal = "lunch";
+  else if (durTime >= 15 && durTime <= 22) timeMeal = "dinner";
+  else timeMeal = "breakfast";
+
   try {
     let doc = await db.collection("menu").doc(`${req.user.hostelId}`).get();
-    let day = new Date().getDay();
-    const datear = [
-      "sunday",
-      "monday",
-      "tuesday",
-      "wednesday",
-      "thursday",
-      "friday",
-      "saturday",
-    ];
-    if (!doc.data()) res.status(400).send({ Error: "no records found" });
-    const Day = datear[day];
 
-    const Meal = doc.data()[`${Day}`];
-    let durTime = new Date().getHours();
-    console.log(durTime);
-    let timeMeal = "";
-    if (durTime >= 10 && durTime <= 15) timeMeal = "lunch";
-    else if (durTime >= 15 && durTime <= 22) timeMeal = "dinner";
-    else timeMeal = "breakfast";
-    const durMeal = Meal[timeMeal];
-
-    const completeMeal = doc.data();
-    res.send({ timeMeal, Meal, durMeal, completeMeal, Day });
+    if (doc.data()) {
+      const Meal = doc.data()[`${Day}`];
+      const durMeal = Meal[timeMeal];
+      const completeMeal = doc.data();
+      res.send({ timeMeal, Meal, durMeal, completeMeal, Day });
+    } else {
+      res.send({ Error: "Not Entered Yet", timeMeal, Day });
+    }
   } catch (e) {
-    res.status(500);
+    res
+      .status(500)
+      .send({ Error: "Problem Connecting to Database", timeMeal, Day });
   }
 };
 

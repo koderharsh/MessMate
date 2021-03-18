@@ -1,6 +1,6 @@
 {
   "name": "mess-mate",
-  "proxy": "http://localhost:5000/mess-mate-305104/us-central1/api/",
+  "proxy": "http://localhost:5001/mess-mate-305104/us-central1/api/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,12 @@
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+<<<<<<< Updated upstream
     "react-minimal-pie-chart": "^8.2.0",
+=======
+    "react-html-id": "^0.1.5",
+    "react-modal": "^3.12.1",
+>>>>>>> Stashed changes
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-toastify": "^7.0.3",
