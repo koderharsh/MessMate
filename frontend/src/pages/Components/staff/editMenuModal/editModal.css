@@ -162,6 +162,11 @@
   padding: 10px;
 }
 
+.headingMeal {
+  margin-left: 5%;
+  margin-top: 1%;
+}
+
 .menu_card > span {
   display: block;
   text-transform: uppercase;

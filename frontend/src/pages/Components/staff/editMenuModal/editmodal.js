@@ -198,7 +198,8 @@ const EditModal = () => {
               <div className='box_grid'>
                 <div className='floatr'>
                   <div className='menu__mealname '>
-                    Breakfast <FilterDramaOutlinedIcon className='icon' />{" "}
+                    <span className='headingMeal'>Breakfast </span>
+                    <FilterDramaOutlinedIcon className='icon' />{" "}
                   </div>
                   <div className='menu_card'>
                     <span>Main course</span>
@@ -319,7 +320,8 @@ const EditModal = () => {
                 </div>
                 <div className='floatr'>
                   <div className='menu__mealname'>
-                    Lunch <WbSunnyOutlinedIcon className='icon' />{" "}
+                    <span className='headingMeal'>Lunch</span>{" "}
+                    <WbSunnyOutlinedIcon className='icon' />{" "}
                   </div>
                   <div className='menu_card'>
                     <span>Main course</span>
@@ -440,7 +442,7 @@ const EditModal = () => {
                 </div>
                 <div className='floatr'>
                   <div className='menu__mealname'>
-                    Dinner{" "}
+                    <span className='headingMeal'> Dinner</span>
                     <NightsStayOutlinedIcon className='icon icon--moon' />{" "}
                   </div>
                   <div className='menu_card'>
