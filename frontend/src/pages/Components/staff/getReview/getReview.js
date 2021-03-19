@@ -57,7 +57,7 @@ const GetReview = () => {
           </p>
         </div>
         {reviews.map((reviewStu) => (
-          <div className='menu__card review_card'>
+          <div className='review_card'>
             <textarea readOnly contentEditable className='font-bold'>
               {reviewStu.review}
             </textarea>
@@ -86,7 +86,7 @@ const GetReview = () => {
           </p>
         </div>
         {reviews.map((reviewStu) => (
-          <div className='menu__card review_card'>
+          <div className='review_card'>
             <textarea readOnly contentEditable className='font-bold'>
               {reviewStu.review}
             </textarea>
@@ -115,7 +115,7 @@ const GetReview = () => {
           </p>
         </div>
         {reviews.map((reviewStu) => (
-          <div className='menu__card review_card'>
+          <div className='review_card'>
             <textarea readOnly contentEditable className='font-bold'>
               {reviewStu.review}
             </textarea>

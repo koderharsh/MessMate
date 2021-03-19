@@ -29,14 +29,20 @@
 .font-bold {
   font-weight: 550;
   text-align: start;
-  font-size: 1.4em;
-  color: rgb(79, 79, 80);
-  background-color: transparent;
+  font-size: 1.2em;
   min-height: 80px;
   width: 98%;
-  border-radius: 5px;
   outline: none;
   overflow-y: scroll;
+  margin-top: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  border: solid 2px rgba(255, 255, 255, 0.6);
+  padding: 8px 8px 8px 18px;
+  border-radius: 12px;
+  outline: none;
+  text-align: left;
+  font-weight: 400;
 }
 
 .size {
