@@ -74,7 +74,7 @@ const UpcomingMeal = () => {
 
   useEffect(() => {
     getMenuList();
-  }, []);
+  }, [token]);
 
   return (
     <div className='menu-box'>

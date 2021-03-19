@@ -120,6 +120,7 @@ body {
 .cardgrid__card > h2 {
   padding-bottom: 20px;
 }
+
 @media only screen and (max-width: 1300px) {
   #messImg-wrapper {
     transform: rotate(0deg) scale(1) translateY(0px) translateX(0px);
@@ -234,9 +235,5 @@ body {
 
   #cardgrid {
     top: 20px;
-  }
-
-  .card2 {
-    height: 400px;
   }
 }

@@ -61,15 +61,6 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper,
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "12ch",
-    },
-  },
   indicator: {
     backgroundColor: "#4444",
   },
@@ -95,7 +86,7 @@ const EditModal = () => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [token]);
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -198,21 +189,22 @@ const EditModal = () => {
             </Tabs>
           </AppBar>
           {datear.map((day, index) => (
-            <TabPanel value={value} index={index} spellcheck='false'>
-              <div className='menu__grid box_grid'>
-                <div className='menu__grid__card floatr'>
-                  <div className='menu__mealname meal'>
+            <TabPanel
+              className='tabpanel'
+              value={value}
+              index={index}
+              spellcheck='false'
+            >
+              <div className='box_grid'>
+                <div className='floatr'>
+                  <div className='menu__mealname '>
                     Breakfast <FilterDramaOutlinedIcon className='icon' />{" "}
                   </div>
-                  <div className='menu__card menu__fooditem'>
+                  <div className='menu_card'>
                     <span>Main course</span>
-                    <form
-                      className={classes.root}
-                      noValidate
-                      autoComplete='off'
-                      style={{ background: "transparent" }}
-                    >
+                    <form className='form' noValidate autoComplete='off'>
                       <TextField
+                        className='textfield'
                         value={
                           menu.data?.completeMeal?.[day.toLowerCase()]
                             ?.breakfast.foodItem.length
@@ -249,7 +241,7 @@ const EditModal = () => {
                     <Button
                       variant='contained'
                       style={{ background: "transparent", color: "white" }}
-                      className='feedback__button style-button'
+                      className='button-meal style-button'
                       endIcon={<SendIcon />}
                       onClick={async (e) => {
                         let menuRes = {
@@ -266,15 +258,11 @@ const EditModal = () => {
                       }}
                     ></Button>
                   </div>
-                  <div className='menu__card menu__dessert'>
+                  <div className='menu_card'>
                     <span>Dessert</span>
-                    <form
-                      className={classes.root}
-                      noValidate
-                      autoComplete='off'
-                      style={{ background: "transparent" }}
-                    >
+                    <form className='form' noValidate autoComplete='off'>
                       <TextField
+                        className='textfield'
                         value={
                           menu.data?.completeMeal?.[day.toLowerCase()]
                             ?.breakfast.desert.length
@@ -311,7 +299,7 @@ const EditModal = () => {
                     <Button
                       style={{ background: "transparent", color: "white" }}
                       variant='contained'
-                      className='feedback__button style-button'
+                      className='button-meal style-button'
                       endIcon={<SendIcon />}
                       onClick={async (e) => {
                         let menuRes = {
@@ -329,19 +317,15 @@ const EditModal = () => {
                     ></Button>
                   </div>
                 </div>
-                <div className='menu__grid__card floatr'>
+                <div className='floatr'>
                   <div className='menu__mealname'>
                     Lunch <WbSunnyOutlinedIcon className='icon' />{" "}
                   </div>
-                  <div className='menu__card menu__fooditem'>
+                  <div className='menu_card'>
                     <span>Main course</span>
-                    <form
-                      className={classes.root}
-                      noValidate
-                      autoComplete='off'
-                      style={{ background: "transparent" }}
-                    >
+                    <form className='form' noValidate autoComplete='off'>
                       <TextField
+                        className='textfield'
                         value={
                           menu.data?.completeMeal?.[day.toLowerCase()]?.lunch
                             .foodItem.length
@@ -378,7 +362,7 @@ const EditModal = () => {
                     <Button
                       style={{ background: "transparent", color: "white" }}
                       variant='contained'
-                      className='feedback__button style-button'
+                      className='button-meal style-button'
                       endIcon={<SendIcon />}
                       onClick={async (e) => {
                         let menuRes = {
@@ -395,15 +379,11 @@ const EditModal = () => {
                       }}
                     ></Button>
                   </div>
-                  <div className='menu__card menu__dessert'>
+                  <div className='menu_card'>
                     <span>Dessert</span>
-                    <form
-                      className={classes.root}
-                      noValidate
-                      autoComplete='off'
-                      style={{ background: "transparent" }}
-                    >
+                    <form className='form' noValidate autoComplete='off'>
                       <TextField
+                        className='textfield'
                         value={
                           menu.data?.completeMeal?.[day.toLowerCase()]?.lunch
                             .desert.length
@@ -440,7 +420,7 @@ const EditModal = () => {
                     <Button
                       style={{ background: "transparent", color: "white" }}
                       variant='contained'
-                      className='feedback__button style-button'
+                      className='button-meal style-button'
                       endIcon={<SendIcon />}
                       onClick={async (e) => {
                         let menuRes = {
@@ -458,20 +438,16 @@ const EditModal = () => {
                     ></Button>
                   </div>
                 </div>
-                <div className='menu__grid__card floatr'>
+                <div className='floatr'>
                   <div className='menu__mealname'>
                     Dinner{" "}
                     <NightsStayOutlinedIcon className='icon icon--moon' />{" "}
                   </div>
-                  <div className='menu__card menu__fooditem'>
+                  <div className='menu_card'>
                     <span>Main course</span>
-                    <form
-                      className={classes.root}
-                      noValidate
-                      autoComplete='off'
-                      style={{ background: "transparent" }}
-                    >
+                    <form className='form' noValidate autoComplete='off'>
                       <TextField
+                        className='textfield'
                         value={
                           menu.data?.completeMeal?.[day.toLowerCase()]?.dinner
                             .foodItem.length
@@ -508,7 +484,7 @@ const EditModal = () => {
                     <Button
                       style={{ background: "transparent", color: "white" }}
                       variant='contained'
-                      className='feedback__button style-button'
+                      className='style-button button-meal'
                       endIcon={<SendIcon />}
                       onClick={async (e) => {
                         let menuRes = {
@@ -525,15 +501,11 @@ const EditModal = () => {
                       }}
                     ></Button>
                   </div>
-                  <div className='menu__card menu__dessert'>
+                  <div className='menu_card'>
                     <span>Dessert</span>
-                    <form
-                      className={classes.root}
-                      noValidate
-                      autoComplete='off'
-                      style={{ background: "transparent" }}
-                    >
+                    <form className='form' noValidate autoComplete='off'>
                       <TextField
+                        className='textfield'
                         InputProps={{
                           className: classes.multilineColor,
                         }}
@@ -570,7 +542,7 @@ const EditModal = () => {
                     <Button
                       style={{ background: "transparent", color: "white" }}
                       variant='contained'
-                      className='feedback__button style-button'
+                      className='button-meal style-button'
                       endIcon={<SendIcon />}
                       onClick={async (e) => {
                         let menuRes = {

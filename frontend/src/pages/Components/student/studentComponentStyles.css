@@ -239,6 +239,10 @@
   left: -35px;
 }
 
+.card2 {
+  overflow: hidden;
+  z-index: 9999;
+}
 @media only screen and (max-width: 900px) {
   .menu__card {
     height: 150px;
