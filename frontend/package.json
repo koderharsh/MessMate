@@ -1,6 +1,6 @@
 {
   "name": "mess-mate",
-  "proxy": "http://localhost:5001/mess-mate-305104/us-central1/api/",
+  "proxy": "http://localhost:5000/mess-mate-305104/us-central1/api/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
