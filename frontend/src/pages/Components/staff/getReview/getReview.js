@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated, getFeedback } from "./../../../../util/staffApi";
-import WbSunnyOutlinedIcon from "@material-ui/icons/WbSunnyOutlined";
-import NightsStayOutlinedIcon from "@material-ui/icons/NightsStayOutlined";
-import FilterDramaOutlinedIcon from "@material-ui/icons/FilterDramaOutlined";
+import Rating from "@material-ui/lab/Rating";
+import Box from "@material-ui/core/Box";
 
 import "./getReview.css";
+import { TextField } from "@material-ui/core";
 
 const token = isAuthenticated() && isAuthenticated().stafftoken;
 
@@ -31,25 +31,36 @@ const GetReview = () => {
 
   useEffect(() => {
     getFeedbackList();
-  }, []);
+  }, [token]);
 
   const renderBreakfast = () => {
     const reviews = feedback.breakfast.reviews;
     return (
-      <div className='review_grid_card breakfast'>
-        <div className='menu__mealname menu_mealname'>
-          Breakfast <FilterDramaOutlinedIcon className='icon' />
+      <div>
+        <div className='menu_mealname'>
           <p className='size'>
-            Student Count : {feedback.breakfast.rating.ratingCount}
+            <p class='fontSize'>Breakfast</p>
           </p>
           <p className='size'>
-            Average Rating : {feedback.breakfast.rating.ratingAverage}
+            <Rating
+              size='large'
+              defaultValue={feedback.breakfast.rating.ratingAverage.toPrecision(
+                3
+              )}
+              max={5}
+              disabled={true}
+              precision={0.1}
+            />
+            <span className='ratingno'>{`(${feedback.breakfast.rating.ratingAverage.toPrecision(
+              3
+            )})`}</span>
           </p>
         </div>
         {reviews.map((reviewStu) => (
-          <div className='menu__card review_card'>
-            <p>StudentId {reviewStu.studentId}</p>
-            <p>{reviewStu.review}</p>
+          <div className='review_card'>
+            <textarea readOnly contentEditable className='font-bold'>
+              {reviewStu.review}
+            </textarea>
           </div>
         ))}
       </div>
@@ -58,20 +69,27 @@ const GetReview = () => {
   const renderLunch = () => {
     const reviews = feedback.lunch.reviews;
     return (
-      <div className='review_grid_card lunch'>
-        <div className='menu__mealname menu_mealname'>
-          Lunch <WbSunnyOutlinedIcon className='icon' />
+      <div>
+        <div className='menu_mealname'>
           <p className='size'>
-            Student Count : {feedback.lunch.rating.ratingCount}
+            <p class='fontSize'>Lunch</p>
           </p>
           <p className='size'>
-            Average Rating : {feedback.lunch.rating.ratingAverage}
+            <Rating
+              size='large'
+              defaultValue={feedback.lunch.rating.ratingAverage}
+              max={5}
+              disabled={true}
+              precision={0.1}
+            />
+            <span className='ratingno'>{`(${feedback.lunch.rating.ratingAverage})`}</span>
           </p>
         </div>
         {reviews.map((reviewStu) => (
-          <div className='menu__card review_card'>
-            <p>StudentId {reviewStu.studentId}</p>
-            <p>{reviewStu.review}</p>
+          <div className='review_card'>
+            <textarea readOnly contentEditable className='font-bold'>
+              {reviewStu.review}
+            </textarea>
           </div>
         ))}
       </div>
@@ -80,20 +98,27 @@ const GetReview = () => {
   const renderDinner = () => {
     const reviews = feedback.dinner.reviews;
     return (
-      <div className='review_grid_card dinner'>
-        <div className='menu__mealname menu_mealname'>
-          Dinner <NightsStayOutlinedIcon className='icon' />
+      <div>
+        <div className='menu_mealname'>
           <p className='size'>
-            Student Count : {feedback.dinner.rating.ratingCount}
+            <p class='fontSize'>Dinner</p>
           </p>
           <p className='size'>
-            Average Rating : {feedback.dinner.rating.ratingAverage}
+            <Rating
+              size='large'
+              defaultValue={feedback.dinner.rating.ratingAverage}
+              max={5}
+              disabled={true}
+              precision={0.1}
+            />
+            <span className='ratingno'>{`(${feedback.dinner.rating.ratingAverage})`}</span>
           </p>
         </div>
         {reviews.map((reviewStu) => (
-          <div className='menu__card review_card'>
-            <p>StudentId {reviewStu.studentId}</p>
-            <p>{reviewStu.review}</p>
+          <div className='review_card'>
+            <textarea readOnly contentEditable className='font-bold'>
+              {reviewStu.review}
+            </textarea>
           </div>
         ))}
       </div>
@@ -101,7 +126,7 @@ const GetReview = () => {
   };
 
   return (
-    <div class='menu__grid '>
+    <div class='menu_grid '>
       {feedback?.breakfast?.rating && renderBreakfast()}
       {feedback?.lunch?.rating && renderLunch()}
       {feedback?.dinner?.rating && renderDinner()}

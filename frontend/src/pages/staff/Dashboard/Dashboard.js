@@ -131,8 +131,8 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    applyAccent()
-    window.scrollTo(0,0)
+    applyAccent();
+    window.scrollTo(0, 0);
 
     getAbsenteeList();
     getStudentFeedback();
@@ -211,7 +211,7 @@ const Dashboard = () => {
           {/* {feedback.breakfast.rating.ratingAverage}  */}
         </div>
         <div className='cardgrid__card' id='card5'>
-          <h2>RATINGS AND REVIEWS</h2>
+          <p className='cardHeading'>Ratings And Reviews</p>
           <GetReview />
         </div>
       </div>
