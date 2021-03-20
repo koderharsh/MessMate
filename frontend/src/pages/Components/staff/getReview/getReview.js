@@ -6,9 +6,9 @@ import Box from "@material-ui/core/Box";
 import "./getReview.css";
 import { TextField } from "@material-ui/core";
 
-const token = isAuthenticated() && isAuthenticated().stafftoken;
 
 const GetReview = () => {
+  const token = isAuthenticated() && isAuthenticated().stafftoken;
   const [feedback, setFeedback] = useState({
     breakfast: "",
     lunch: "",
@@ -29,8 +29,10 @@ const GetReview = () => {
       });
   };
 
-  useEffect(() => {
-    getFeedbackList();
+  useEffect(async () => {
+    try {
+      await getFeedbackList();
+    } catch(err) { console.log(err) }
   }, [token]);
 
   const renderBreakfast = () => {
