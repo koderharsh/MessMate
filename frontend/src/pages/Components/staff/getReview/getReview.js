@@ -38,29 +38,27 @@ const GetReview = () => {
     return (
       <div>
         <div className='menu_mealname'>
-          <p className='size'>
-            <p class='fontSize'>Breakfast</p>
+          <p className='size' >
+            <p className='fontSize'>Breakfast</p>
           </p>
-          <p className='size'>
+          <p className='size' style={{marginTop: '5px'}}>
             <Rating
               size='large'
               defaultValue={feedback.breakfast.rating.ratingAverage.toPrecision(
                 3
               )}
               max={5}
-              disabled={true}
               precision={0.1}
+              readOnly
             />
-            <span className='ratingno'>{`(${feedback.breakfast.rating.ratingAverage.toPrecision(
+            <span className='ratingno' style={{fontSize: '0.9em'}}>{`(${feedback.breakfast.rating.ratingAverage.toPrecision(
               3
             )})`}</span>
           </p>
         </div>
         {reviews.map((reviewStu) => (
           <div className='review_card'>
-            <textarea readOnly contentEditable className='font-bold'>
-              {reviewStu.review}
-            </textarea>
+            <textarea readOnly className='font-bold' value={reviewStu.review}/>
           </div>
         ))}
       </div>
@@ -72,24 +70,24 @@ const GetReview = () => {
       <div>
         <div className='menu_mealname'>
           <p className='size'>
-            <p class='fontSize'>Lunch</p>
+            <p className='fontSize' style={{marginTop: '20px'}}>Lunch</p>
           </p>
-          <p className='size'>
+          <p className='size' style={{marginTop: '5px'}}>
             <Rating
               size='large'
-              defaultValue={feedback.lunch.rating.ratingAverage}
+              defaultValue={feedback.lunch.rating.ratingAverage.toPrecision(
+                3
+              )}
               max={5}
-              disabled={true}
+              readOnly
               precision={0.1}
             />
-            <span className='ratingno'>{`(${feedback.lunch.rating.ratingAverage})`}</span>
+            <span className='ratingno'  style={{fontSize: '0.9em'}}>{`(${feedback.lunch.rating.ratingAverage})`}</span>
           </p>
         </div>
         {reviews.map((reviewStu) => (
           <div className='review_card'>
-            <textarea readOnly contentEditable className='font-bold'>
-              {reviewStu.review}
-            </textarea>
+            <textarea readOnly className='font-bold' value={reviewStu.review}/>
           </div>
         ))}
       </div>
@@ -101,24 +99,24 @@ const GetReview = () => {
       <div>
         <div className='menu_mealname'>
           <p className='size'>
-            <p class='fontSize'>Dinner</p>
+            <p className='fontSize' style={{marginTop: '20px'}}>Dinner</p>
           </p>
-          <p className='size'>
+          <p className='size' style={{marginTop: '5px'}}>
             <Rating
               size='large'
-              defaultValue={feedback.dinner.rating.ratingAverage}
+              defaultValue={feedback.dinner.rating.ratingAverage.toPrecision(
+                3
+              )}              
               max={5}
-              disabled={true}
+              readOnly
               precision={0.1}
             />
-            <span className='ratingno'>{`(${feedback.dinner.rating.ratingAverage})`}</span>
+            <span className='ratingno'  style={{fontSize: '0.9em'}}>{`(${feedback.dinner.rating.ratingAverage})`}</span>
           </p>
         </div>
         {reviews.map((reviewStu) => (
           <div className='review_card'>
-            <textarea readOnly contentEditable className='font-bold'>
-              {reviewStu.review}
-            </textarea>
+            <textarea readOnly className='font-bold' value={reviewStu.review}/>
           </div>
         ))}
       </div>
@@ -126,7 +124,7 @@ const GetReview = () => {
   };
 
   return (
-    <div class='menu_grid '>
+    <div className='menu_grid '>
       {feedback?.breakfast?.rating && renderBreakfast()}
       {feedback?.lunch?.rating && renderLunch()}
       {feedback?.dinner?.rating && renderDinner()}
