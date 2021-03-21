@@ -12,6 +12,7 @@ import orangeImage from "../student/Dashboard/pasta.jpg";
 import yellowImage from "../student/Dashboard/mango1.jpg";
 import Button from "@material-ui/core/Button";
 import SendIcon from "@material-ui/icons/Send";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import "./Login.css";
 
 import redLogo from "../../logos/redLogo.png";
@@ -28,6 +29,7 @@ const Login = () => {
     password: "",
     errors: {},
   });
+  const [loading,setLoading]=useState(false);
 
   //destructured
   const { email, password, errors } = student;
@@ -40,10 +42,12 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setStudent({ ...student, errors: false });
+    setLoading(true);
     login({ email, password }).then((data) => {
       //console.log(data);
       if (data && data.errors) {
         setStudent({ ...student, errors: data.errors });
+        setLoading(false)
       } else {
         //on success authenticate by adding token to localstorage
         authenticate(data, () => {
@@ -53,11 +57,14 @@ const Login = () => {
             password: "",
             errors: {},
           });
+          setLoading(false)
           history.push("/dashboard/student");
         });
       }
     });
   };
+  const showLoading=()=>
+loading&&(<CircularProgress size={30} style={{position:"absolute",color:"#000"}}/>);
 
 useEffect(() => {
   applyAccent()
@@ -129,8 +136,10 @@ useEffect(() => {
                 variant='contained'
                 color='primary'
                 onClick={handleSubmit}
+                disabled={loading}
               >
-                Login{" "}
+                Login
+                {showLoading()}
               </Button>
               <p>
                 Don't have an account?{" "}

@@ -40,7 +40,7 @@ document.body.style.overflow = 'auto'
                     Messmate
                 </div>
                     <div id="home__sitedesc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                        Messmate acts as a link between hostelers and mess staff, helps in efficient management of the mess and decrease food wastage due to overproduction.
                     <a href="#home__sectionTwo">
                             <Button className="home__sitedesc__button">Know more</Button>
                         </a>
@@ -84,7 +84,8 @@ document.body.style.overflow = 'auto'
                             Prior information about absentees
                     </div>
                         <div className="home__featureGrid__card__desc">
-                            Some description
+                            Hostelers can send prior notification to the mess if they plan to skip a meal on that day. <br />
+                            The expected number of absentees is shown on the staff dashboard which helps them prepare the food accordingly, hence reducing wastage due to overproduction.
                     </div>
                     </div>
                     <div className="home__featureGrid__card">
@@ -93,7 +94,7 @@ document.body.style.overflow = 'auto'
                             Meal rating and reviews
                     </div>
                         <div className="home__featureGrid__card__desc">
-                            Some description
+                            Rating (out of 5★) and textual reviews/suggestions can be sent by the hostelers after the meal, which can help the staff gather feedback about the food easily, and maintain the food quality.
                     </div>
                     </div>
                     <div className="home__featureGrid__card">
@@ -102,7 +103,7 @@ document.body.style.overflow = 'auto'
                             Announcements via push notifications
                     </div>
                         <div className="home__featureGrid__card__desc">
-                            Some description
+                            Mess staff can make important announcements directly from the mess dashboard, which are immediately delivered to all the hostelers registered in that mess as push notifications.
                     </div>
                     </div>
                     <div className="home__featureGrid__card">
@@ -111,7 +112,7 @@ document.body.style.overflow = 'auto'
                             Check daily menu
                     </div>
                         <div className="home__featureGrid__card__desc">
-                            Some description
+                            Mess can post weekly menu which is visible to all the hostelers registered in that mess.
                     </div>
                     </div>
                 </div>

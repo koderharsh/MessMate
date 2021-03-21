@@ -435,7 +435,7 @@ box-sizing: border-box;
     transition: all 0.3s;
     opacity: 0;
     
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 20px;
     overflow-y: auto;
     color: rgba(0, 0, 0, 0.6);

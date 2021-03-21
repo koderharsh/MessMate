@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import SendIcon from '@material-ui/icons/Send';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import redLogo from '../../logos/redLogo.png'
 import greenLogo from '../../logos/greenLogo.png'
@@ -29,6 +30,7 @@ const history=useHistory();
     hostel:"",
     errors:{}
   });
+  const [loading,setLoading]=useState(false);
 
   //destructured
   const {email,password,name,hostel,errors}=staff;
@@ -41,6 +43,7 @@ const history=useHistory();
 //handle submit of form
   const handleSubmit=(event)=>{
   event.preventDefault()
+  setLoading(true)
    const hostelId=hostel.toUpperCase();
   setStaff({...staff,errors:false});
 
@@ -49,6 +52,7 @@ const history=useHistory();
     //console.log(data);
     if(data && data.errors){
       setStaff({...staff,errors:data.errors})
+      setLoading(false)
     }else{
       //on success authenticate by adding token to localstorage
     authenticate(data,()=>{
@@ -61,10 +65,14 @@ const history=useHistory();
         errors:{}
     })
     });
+    setLoading(false)
     history.push("/dashboard/staff")
   }
 })
 }
+
+const showLoading=()=>
+loading&&(<CircularProgress size={30} style={{position:"absolute",color:"#000"}}/>);
 
 useEffect(() => {
   applyAccent()
@@ -75,10 +83,10 @@ useEffect(() => {
     <div>
       <div id='dashboard-wrapper'>
       <div className="dashboard__title__wrapper">
-        <div> 
+        <div>
           <div id="dashboard__logo__wrapper">
             <img src='' />
-          </div> 
+          </div>
           Messmate
         </div>
 
@@ -120,8 +128,8 @@ useEffect(() => {
             {errors.general&& (<Typography variant="body2" className="customError">
              {errors.general}
            </Typography>)}
-            <Button className="login_button" variant="contained" color="primary"onClick={handleSubmit}>Signup</Button>
-            <p>Already have an accout? <span className="redirect" onClick={() => history.push('/login/staff')}>Sign in</span></p>
+            <Button className="login_button" variant="contained" color="primary"onClick={handleSubmit} disabled={loading}>Signup {showLoading()}</Button>
+            <p>Already have an account? <span className="redirect" onClick={() => history.push('/login/staff')}>Sign in</span></p>
         </form>
         </div>
       </div>
@@ -159,12 +167,12 @@ function applyAccent() {
       document.body.style.overflow = 'hidden'
     }
   }
-  
+
   if(accentNum == 4)
   document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(1) brightness(1) hue-rotate(10deg) opacity(0.8)'
-  else if(accentNum == 3) 
+  else if(accentNum == 3)
   document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(0.5) brightness(0.8) hue-rotate(40deg) opacity(0.8)'
-  else 
+  else
   document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'saturate(15) contrast(1) brightness(1) opacity(0.8)'
   if(window.innerWidth <= 1300) document.querySelector('#dashboard__logo__wrapper > img').style.filter = 'brightness(15) saturate(0) contrast(10)'
 }
