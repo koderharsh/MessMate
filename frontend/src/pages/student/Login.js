@@ -90,7 +90,7 @@ useEffect(() => {
           </div>
         </div>
         <div id='cardgrid'>
-          <div className='cardgrid__card' id='card4'>
+          <div className='cardgrid__card cardgrid__card--auth' id='card4'>
             <div className='Loginheader'>
               <h3 className='student-card-heading'>Student Login</h3>
             </div>

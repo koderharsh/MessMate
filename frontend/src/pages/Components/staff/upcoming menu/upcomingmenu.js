@@ -6,9 +6,10 @@ import {
 } from "./../../../../util/staffApi";
 import "./upcomingmenu.css";
 
-const token = isAuthenticated() && isAuthenticated().stafftoken;
 
 const UpcomingMeal = () => {
+  const token = isAuthenticated() && isAuthenticated().stafftoken;
+
   let [meal, setMeal] = useState({
     day: "",
     mealT: "",
@@ -33,11 +34,11 @@ const UpcomingMeal = () => {
     );
   };
 
-  const getMenuList = async () => {
-    await getMenu(token)
+  const getMenuList =  (token) => {
+     getMenu(token)
       .then((data) => {
         if (!data.error) {
-          console.log(data, "harsh");
+          console.log(data, 'no error');
           setMeal({
             ...meal,
             day: data.Day.toUpperCase(),
@@ -50,30 +51,34 @@ const UpcomingMeal = () => {
               : "Not Entered Yet",
           });
         } else {
-          const food = "Not Entered Yet";
+          const food = "Not entered yet";
+          console.log(data.error, 'e2')
 
-          setMeal({
-            day: data.Day.toUpperCase(),
-            mealT: data.timeMeal.toUpperCase(),
-            err: data.error,
-            foodItem: food,
-            desert: food,
-          });
+          // setMeal({
+          //   day: data.Day.toUpperCase(),
+          //   mealT: data.timeMeal.toUpperCase(),
+          //   err: data.error,
+          //   foodItem: food,
+          //   desert: food,
+          // });
         }
       })
       .catch((e) => {
-        setMeal({
-          day: `Can't Connect`,
-          mealT: `Can't Connect`,
-          err: e,
-          foodItem: `Can't Connect`,
-          desert: `Can't Connect`,
-        });
+        console.log(e, 'e3')
+        // setMeal({
+        //   day: `Can't Connect`,
+        //   mealT: `Can't Connect`,
+        //   err: e,
+        //   foodItem: `Can't Connect`,
+        //   desert: `Can't Connect`,
+        // });
       });
   };
 
-  useEffect(() => {
-    getMenuList();
+  useEffect(async () => {
+    try {
+      await getMenuList(token);
+    } catch(err) { console.log(err) }
   }, [token]);
 
   return (
