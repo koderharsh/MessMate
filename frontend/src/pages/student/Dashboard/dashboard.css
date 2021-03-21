@@ -24,6 +24,7 @@
 * {
   user-select: none;
   -ms-overflow-style: none;
+  scrollbar-width: none;
   padding: 0px;
   margin: 0px;
   border: 0px;
