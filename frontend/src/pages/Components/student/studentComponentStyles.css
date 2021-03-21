@@ -136,6 +136,14 @@
   }
 }
 
+#feedback__tiptext {
+  display: none;
+}
+
+#feedback__form {
+  display: none;
+}
+
 /* feedback component styles END */
 
 /* menu component styles */
