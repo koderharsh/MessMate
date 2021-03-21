@@ -256,6 +256,7 @@ const EditModal = () => {
                               .desert,
                         };
                         await postMenu(token, menuRes);
+                        alert("Menu Updated");
                       }}
                     ></Button>
                   </div>
@@ -314,6 +315,7 @@ const EditModal = () => {
                               .desert,
                         };
                         await postMenu(token, menuRes);
+                        alert("Menu Updated");
                       }}
                     ></Button>
                   </div>
@@ -378,6 +380,7 @@ const EditModal = () => {
                               .desert,
                         };
                         await postMenu(token, menuRes);
+                        alert("Menu Updated");
                       }}
                     ></Button>
                   </div>
@@ -436,6 +439,7 @@ const EditModal = () => {
                               .desert,
                         };
                         await postMenu(token, menuRes);
+                        alert("Menu Updated");
                       }}
                     ></Button>
                   </div>
@@ -500,6 +504,7 @@ const EditModal = () => {
                               .desert,
                         };
                         await postMenu(token, menuRes);
+                        alert("Menu Updated");
                       }}
                     ></Button>
                   </div>
@@ -558,6 +563,7 @@ const EditModal = () => {
                               .desert,
                         };
                         await postMenu(token, menuRes);
+                        alert("Menu Updated");
                       }}
                     ></Button>
                   </div>
