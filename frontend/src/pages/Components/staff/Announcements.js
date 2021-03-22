@@ -50,7 +50,7 @@ const Announcements = () => {
       <Button
         variant='contained'
         color='primary'
-        className='feedback__button'
+        className='feedback__button feedbackButton'
         endIcon={<SendIcon />}
         onClick={postNotif}
         style={{
