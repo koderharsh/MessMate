@@ -264,3 +264,24 @@
     height: max-content;
   }
 }
+
+@media only screen and (min-width: 901px) and (max-width: 1300px) {
+  .taAnnouncement {
+    position: relative;
+    top: -20px;
+  }
+  .feedback__button {
+    position: relative;
+    top: -25px;
+  }
+}
+@media only screen and (min-width: 1301px) and (max-width: 1315px) {
+  .taAnnouncement {
+    position: relative;
+    top: -20px;
+  }
+  .feedback__button {
+    position: relative;
+    top: -40px;
+  }
+}
