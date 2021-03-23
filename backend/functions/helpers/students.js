@@ -4,6 +4,7 @@ const firebase=require("firebase");
 const {validateSignup,validateLogin}=require("../middlewares/validation");
 
 exports.studentSignup=(req,res)=>{
+  
   const newStudent={
     email:req.body.email,
     password:req.body.password,

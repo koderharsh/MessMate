@@ -4,7 +4,14 @@ const firebase=require("firebase");
 const {validateSignup,validateLogin}=require("../middlewares/validation");
 
 exports.staffSignup=(req,res)=>{
-
+db.collection('staff')
+.get()
+.then(data=>{
+  data.forEach(doc=>{
+    if(doc.data().hostelId===req.body.hostelId)
+    return res.status(400).json({errors:{general:"Unauthorised"}})
+  })
+})
   const newStaff={
     email:req.body.email,
     password:req.body.password,
