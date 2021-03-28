@@ -291,10 +291,11 @@ box-sizing: border-box;
     }
 }
 
-
-
-
-
+@media only screen and (max-width: 375px) {
+    #home__sectionOne__right {
+        margin-top: 110px;
+    }
+}
 
 /* Section 1 end */
 

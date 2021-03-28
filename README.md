@@ -54,7 +54,7 @@ Mess can post weekly menu which is visible to all the hostelers registered in th
 
 ### See it in action!!
 - **[Open Messmate](https://mess-mate-305104.web.app/ "Open Messmate")**
-- **[View demo video](https://youtu.be/fWO7ud-crLk "View demo video")**
+- **[Watch demo video](https://youtu.be/fWO7ud-crLk "Watch demo video")**
 
 
 ### Contributing to the project:
