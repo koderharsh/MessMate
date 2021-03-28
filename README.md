@@ -1,6 +1,6 @@
 # Messmate
 [![](https://res.cloudinary.com/ishaanmehta4/image/upload/c_scale,w_150/v1616932485/favicon_nckriy.png)](https://res.cloudinary.com/ishaanmehta4/image/upload/c_scale,w_150/v1616932485/favicon_nckriy.png)
-### Project for [DSC Solution Challange 2021](https://developers.google.com/community/dsc-solution-challenge "DSC Solution Challange 2021")
+### Project for [DSC Solution Challenge 2021](https://developers.google.com/community/dsc-solution-challenge "DSC Solution Challange 2021")
 ##### BY TEAM CODING POLTERGEISTS
 Messmate is an end to end solution for mess management. It acts as a link between hostelers and mess staff, helps in efficient management of the mess and decrease food wastage due to overproduction.
 
@@ -52,8 +52,9 @@ Mess can post weekly menu which is visible to all the hostelers registered in th
 [![](https://res.cloudinary.com/ishaanmehta4/image/upload/v1616932264/ss11_ggknon.jpg)](https://res.cloudinary.com/ishaanmehta4/image/upload/v1616932264/ss11_ggknon.jpg)
 
 
-### Try it out!!
-> [Open Messmate](https://mess-mate-305104.web.app/ "Open Messmate")
+### See it in action!!
+- **[Open Messmate](https://mess-mate-305104.web.app/ "Open Messmate")**
+- **[View demo video](https://youtu.be/fWO7ud-crLk "View demo video")**
 
 
 ### Contributing to the project:
