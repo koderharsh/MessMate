@@ -6,7 +6,6 @@ import {
 } from "./../../../../util/staffApi";
 import "./upcomingmenu.css";
 
-
 const UpcomingMeal = () => {
   const token = isAuthenticated() && isAuthenticated().stafftoken;
 
@@ -34,11 +33,11 @@ const UpcomingMeal = () => {
     );
   };
 
-  const getMenuList =  (token) => {
-     getMenu(token)
+  const getMenuList = (token) => {
+    getMenu(token)
       .then((data) => {
         if (!data.error) {
-          console.log(data, 'no error');
+          console.log(data, "no error");
           setMeal({
             ...meal,
             day: data.Day.toUpperCase(),
@@ -52,7 +51,7 @@ const UpcomingMeal = () => {
           });
         } else {
           const food = "Not entered yet";
-          console.log(data.error, 'e2')
+          console.log(data.error, "e2");
 
           // setMeal({
           //   day: data.Day.toUpperCase(),
@@ -64,7 +63,7 @@ const UpcomingMeal = () => {
         }
       })
       .catch((e) => {
-        console.log(e, 'e3')
+        console.log(e, "e3");
         // setMeal({
         //   day: `Can't Connect`,
         //   mealT: `Can't Connect`,
@@ -78,8 +77,10 @@ const UpcomingMeal = () => {
   useEffect(async () => {
     try {
       await getMenuList(token);
-    } catch(err) { console.log(err) }
-  }, [token]);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [meal]);
 
   return (
     <div className='menu-box'>

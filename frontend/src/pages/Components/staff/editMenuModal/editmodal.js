@@ -107,7 +107,7 @@ const EditModal = () => {
       ...menu,
       selectedOption: false,
     });
-    reload();
+    // reload();
   };
 
   const customStyles = {
@@ -124,7 +124,7 @@ const EditModal = () => {
     "Saturday",
   ];
 
-  const reload = () => window.location.reload();
+  // const reload = () => window.location.reload();
 
   const getDay = (index) => {
     if (index == 0) return Sunday;
