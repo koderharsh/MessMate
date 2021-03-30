@@ -57,6 +57,23 @@ Mess can post weekly menu which is visible to all the hostelers registered in th
 - **[Watch demo video](https://youtu.be/fWO7ud-crLk "Watch demo video")**
 
 
+### Running the project locally:
+First of all, install the dependencies by running the following command in "frontend" and "backend/functions" directories:
+
+```
+$ npm install
+```
+Then, in the "backend/functions" directory, start the backend server using the following command:
+
+```
+$ npm run serve
+```
+Lastly, navigate to the "frontend" directory and start the React development server using:
+
+```
+$ npm start
+```
+
 ### Contributing to the project:
 Pull requests / bug reports are welcome :)
 
